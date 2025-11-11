@@ -1,0 +1,482 @@
+{
+  "nav": {
+    "home": "HOME",
+    "about": "ABOUT US",
+    "services": "SERVICES",
+    "project": "PROJECT",
+    "contact": "CONTACT",
+    "call": "CALL"
+  },
+  "hero": {
+    "tagline": "Professional concrete cutting and drilling within 24 hours in Mecca",
+    "taglineAlt": "JEDDAH AND TAIF",
+    "alwaysReady": "Always Ready"
+  },
+  "about": {
+    "title": "ABOUT",
+    "heading": "Specialized service for opening,",
+    "description": "Specialized service for opening doors and windows, plumbing and electrical installations, and precise demolition without breaking or stopping work."
+  },
+  "services": {
+    "title": "SERVICES",
+    "heading": "Your project journey with us in 4 steps",
+    "step1": {
+      "title": "Free communication and consultation",
+      "description": "Analyze your needs over a short call and determine the appropriate type of cutting or perforation."
+    },
+    "step2": {
+      "title": "Clear same-day pricing",
+      "description": "Receive transparent and competitive pricing on the same day, with no hidden fees or surprises."
+    },
+    "step3": {
+      "title": "Accurate field implementation",
+      "description": "Our expert team executes your project with precision and attention to detail on-site."
+    },
+    "step4": {
+      "title": "Delivery and documented reports",
+      "description": "Get comprehensive documentation and reports delivered promptly after project completion."
+    },
+    "sendWhatsApp": "SEND WHATS UP",
+    "callUs": "CALL US"
+  },
+  "gallery": {
+    "heading": "Gallery of our work",
+    "filters": {
+      "all": "ALL",
+      "cutting": "Cutting concrete",
+      "perforation": "Concrete perforation",
+      "maintenance": "Maintenance and repair"
+    }
+  },
+  "faq": {
+    "title": "Questions",
+    "heading": "All the Important Details",
+    "items": [
+      {
+        "question": "How can I register for the Akron Tech Summit?",
+        "answer": "You can register through our online portal or contact us directly."
+      },
+      {
+        "question": "Will the summit be available online for remote attendees?",
+        "answer": "Yes, we offer both in-person and online attendance options."
+      },
+      {
+        "question": "What is the dress code for the event?",
+        "answer": "Business casual attire is recommended for all attendees."
+      },
+      {
+        "question": "Can I submit my project or research for the summit?",
+        "answer": "Yes, we welcome project and research submissions. Please contact us for details."
+      },
+      {
+        "question": "How can I become a sponsor or exhibitor at the event?",
+        "answer": "Please reach out to our sponsorship team through the contact page."
+      },
+      {
+        "question": "Will there be opportunities for networking at the summit?",
+        "answer": "Absolutely! We have dedicated networking sessions and social events."
+      }
+    ]
+  },
+  "promotional": {
+    "heading": "Special offer for Google Ads campaigns",
+    "description": "Book your free consultation to analyze your project and discover the best cutting and drilling solution in minutes",
+    "sendWhatsApp": "SEND WHATS UP",
+    "callUs": "CALL US"
+  },
+  "contact": {
+    "getInTouch": "Get in Touch",
+    "heading": "Contact Us",
+    "description": "Ready to start your project? Get in touch with us today. Our team is available 24/7 to assist you with all your concrete cutting and construction needs.",
+    "sendMessage": "Send us a Message",
+    "form": {
+      "name": "Your Name",
+      "namePlaceholder": "John Doe",
+      "email": "Email Address",
+      "emailPlaceholder": "john@example.com",
+      "phone": "Phone Number",
+      "phonePlaceholder": "+966 50 123 4567",
+      "service": "Service Needed",
+      "selectService": "Select a service",
+      "message": "Message",
+      "messagePlaceholder": "Tell us about your project...",
+      "sending": "Sending...",
+      "send": "Send Message",
+      "success": "Thank you for your message! We will get back to you soon."
+    },
+    "contactInfo": "Contact Information",
+    "contactInfoDescription": "We're here to help you with all your concrete cutting and construction needs. Reach out to us through any of the following channels.",
+    "phone": "Phone",
+    "phoneNumber": "+966 50 123 4567",
+    "available247": "Available 24/7",
+    "whatsapp": "WhatsApp",
+    "quickResponse": "Quick response guaranteed",
+    "location": "Location",
+    "locationCity": "Mecca, Saudi Arabia",
+    "locationService": "Serving Mecca, Jeddah & Taif",
+    "workingHours": "Working Hours",
+    "hours247": "24/7 Available",
+    "emergencyService": "Emergency service ready"
+  },
+  "footer": {
+    "social": "Social",
+    "copyright": "All copyrights @",
+    "terms": "Terms and Conditions"
+  },
+  "terms": {
+    "title": "Terms and Conditions",
+    "backToHome": "Back to Home",
+    "lastUpdated": "Last Updated",
+    "lastUpdatedDate": "January 2025",
+    "section1": {
+      "title": "1. Introduction",
+      "content": "Welcome to ALMOHTAREF. These Terms and Conditions govern your use of our concrete cutting and drilling services. By engaging our services, you agree to be bound by these terms. Please read them carefully."
+    },
+    "section2": {
+      "title": "2. Services",
+      "content": "We provide professional concrete cutting, drilling, and related construction services in Mecca, Jeddah, and Taif. Our services include but are not limited to:",
+      "item1": "Concrete cutting and sawing",
+      "item2": "Reinforced concrete cutting",
+      "item3": "Drilling and perforation services",
+      "item4": "Crack repair and maintenance"
+    },
+    "section3": {
+      "title": "3. Service Availability",
+      "content": "We operate 24/7 and provide emergency services. However, service availability may be subject to weather conditions, site accessibility, and other factors beyond our control. We will inform you of any delays or limitations as soon as possible."
+    },
+    "section4": {
+      "title": "4. Pricing and Payment",
+      "content": "All pricing is provided on a case-by-case basis after consultation. We provide transparent, same-day pricing with no hidden fees. Payment terms will be agreed upon before work commences. We accept various payment methods as discussed during consultation."
+    },
+    "section5": {
+      "title": "5. Site Access and Safety",
+      "content": "The client is responsible for ensuring safe and accessible site conditions. We require proper site access, adequate lighting, and compliance with all safety regulations. Any additional costs due to site conditions or delays will be communicated and agreed upon beforehand."
+    },
+    "section6": {
+      "title": "6. Liability and Insurance",
+      "content": "We carry appropriate insurance coverage for our operations. However, clients are responsible for ensuring their property is adequately insured. We are not liable for damage to existing structures beyond our control or due to pre-existing conditions."
+    },
+    "section7": {
+      "title": "7. Warranty and Guarantees",
+      "content": "We guarantee professional workmanship and quality materials. Any defects in our work will be rectified at no additional cost, provided they are reported within 30 days of completion and are due to our workmanship."
+    },
+    "section8": {
+      "title": "8. Changes and Cancellations",
+      "content": "Changes to the scope of work must be agreed upon in writing. Cancellations made less than 24 hours before scheduled work may incur charges for preparation and mobilization costs already incurred."
+    },
+    "contact": {
+      "title": "Questions About Our Terms?",
+      "description": "If you have any questions about these Terms and Conditions, please don't hesitate to contact us.",
+      "button": "Contact Us"
+    }
+  },
+  "servicesList": {
+    "concreteCutting": "Concrete Cutting",
+    "reinforcedCutting": "Reinforced Concrete Cutting",
+    "drilling": "Drilling Services",
+    "crackRepair": "Crack Repair",
+    "deliberateDemolition": "Deliberate Demolition",
+    "consultation": "Consultation Services"
+  },
+  "projects": {
+    "ourLatestProjects": "Our Latest Projects",
+    "showcaseOfExcellence": "Showcase of Excellence",
+    "description": "Each project represents our commitment to precision, quality, and professional excellence. From commercial complexes to residential renovations, we deliver cutting-edge solutions that meet the highest standards.",
+    "noProjectsFound": "No projects found in this category.",
+    "viewAllProjects": "View All Projects",
+    "explore": "Explore",
+    "categories": {
+      "all": "ALL",
+      "drilling": "Drilling",
+      "cutting": "Cutting",
+      "repair": "Repair",
+      "demolition": "Demolition"
+    }
+  },
+  "fullServices": {
+    "ourServices": "Our services",
+    "discoverFullServices": "Discover the Full SERVICES",
+    "concreteCuttingAndDrilling": "Concrete cutting and drilling",
+    "learnAboutServices": "Learn about our services or contact us through the contact page.",
+    "services": [
+      {
+        "description": "Drilling concrete with core holes (up to 50 cm in diameter).",
+        "alt": "Technician performing concrete core drilling service"
+      },
+      {
+        "description": "Cutting reinforced concrete with a diamond saw (for all thicknesses).",
+        "alt": "Diamond saw cutting reinforced concrete slab"
+      },
+      {
+        "description": "Cutting thick concrete using diamond wire technology.",
+        "alt": "Specialists operating diamond wire cutting equipment"
+      },
+      {
+        "description": "Repairing cracks caused by perforation using epoxy injection",
+        "alt": "Epoxy injection repairing cracks in concrete wall"
+      },
+      {
+        "description": "Deliberate demolition of buildings while preserving the concrete structure",
+        "alt": "Planned demolition work at a concrete structure"
+      }
+    ]
+  },
+  "successStories": {
+    "heading": "Success stories prove our commitment",
+    "knowMore": "KNOW MORE",
+    "home": "HOME",
+    "labels": {
+      "challenge": "The challenge:",
+      "solution": "Solution:",
+      "result": "The result:"
+    },
+    "stories": [
+      {
+        "title": "Residential tower in Jeddah",
+        "subtitle": "Providing 36 working hours",
+        "challenge": "Implementing 28 extension openings on occupied floors.",
+        "solution": "Divide the work into night shifts with an integrated dust extraction system.",
+        "result": "The work was completed without any complaints from the residents and with the finishes fully preserved."
+      },
+      {
+        "title": "Hospital in Mecca",
+        "subtitle": "Zero suspension of services",
+        "challenge": "Cutting openings in operating rooms without affecting sensitive equipment.",
+        "solution": "Use water saws with complete wrapping of the work area and water recycling.",
+        "result": "Project delivered ahead of schedule with a calibration report for the medical devices"
+      },
+      {
+        "title": "Factory in Medina",
+        "subtitle": "100% commitment to safety",
+        "challenge": "Removing heavy concrete foundations within an active production line",
+        "solution": "A specialized team using diamond wire technology with a segmented dismantling plan.",
+        "result": "The line was restarted on the same day without any injuries or losses."
+      }
+    ]
+  },
+  "admin": {
+    "panel": "Admin Panel",
+    "loading": "Loading...",
+    "logout": "Logout",
+    "tabs": {
+      "projects": "Projects",
+      "services": "Services",
+      "testimonials": "Testimonials",
+      "banners": "Banners"
+    },
+    "addNew": "Add New",
+    "edit": "Edit",
+    "delete": "Delete",
+    "featured": "Featured",
+    "feature": "Feature",
+    "approved": "Approved",
+    "approve": "Approve",
+    "save": "Save",
+    "cancel": "Cancel",
+    "changeImage": "Change Image",
+    "setImage": "Set Image",
+    "uploadImage": "Upload Image",
+    "deleteConfirm": "Are you sure you want to delete this item?",
+    "form": {
+      "edit": "Edit",
+      "addNew": "Add New",
+      "title": "Title",
+      "titleAr": "Title (Arabic)",
+      "description": "Description",
+      "descriptionAr": "Description (Arabic)",
+      "image": "Image",
+      "category": "Category",
+      "categoryAr": "Category (Arabic)",
+      "year": "Year",
+      "link": "Link (optional)",
+      "icon": "Icon (concrete-cutting, reinforced-concrete, drilling, crack-repair, demolition, consultation)",
+      "bannerPages": {
+        "home": "Home Page",
+        "contact": "Contact Page",
+        "about": "About Us Page"
+      }
+    },
+    "login": {
+      "title": "Admin Login",
+      "subtitle": "Sign in to manage your content",
+      "username": "Username",
+      "usernamePlaceholder": "Enter your username",
+      "password": "Password",
+      "passwordPlaceholder": "Enter your password",
+      "signingIn": "Signing in...",
+      "signIn": "Sign In",
+      "loginFailed": "Login failed",
+      "errorOccurred": "An error occurred. Please try again."
+    }
+  },
+  "servicesPage": {
+    "home": "Home",
+    "services": "Services",
+    "ourServices": "Our Services",
+    "heroDescription": "Professional services that fit your needs. We deliver excellence in every project, combining expertise with cutting-edge technology to bring your vision to life.",
+    "featured": "Featured",
+    "featuredServices": "Featured Services",
+    "featuredDescription": "Explore our most popular services that have helped countless clients achieve their goals.",
+    "learnMore": "Learn More",
+    "bookNow": "Book Now",
+    "readyToGetStarted": "Ready to Get Started?",
+    "ctaDescription": "Let's discuss your project and find the perfect solution for your needs. Our team is ready to help you achieve your goals.",
+    "getAQuote": "Get a Quote",
+    "contactUs": "Contact Us",
+    "testimonials": "Testimonials",
+    "trustedByProfessionals": "Trusted by Professionals",
+    "testimonialsDescription": "See what our clients say about our services",
+    "loading": "Loading...",
+    "testimonialsList": [
+      {
+        "quote": "Exceptional service and professional team. They delivered exactly what we needed on time and within budget.",
+        "author": "Ahmed Al-Mansoori",
+        "role": "Construction Manager"
+      },
+      {
+        "quote": "The quality of work exceeded our expectations. Highly recommend their services for any concrete project.",
+        "author": "Fatima Al-Zahra",
+        "role": "Project Coordinator"
+      },
+      {
+        "quote": "Professional, reliable, and cost-effective. Best choice for concrete services in the region.",
+        "author": "Mohammed Al-Rashid",
+        "role": "Site Engineer"
+      }
+    ]
+  },
+  "aboutUs": {
+    "hero": {
+      "subtitle": "Our Story",
+      "title": "Building Excellence,",
+      "titleHighlight": "One Cut at a Time",
+      "description": "For over a decade, Almohtaref has been the trusted partner for precision concrete cutting, demolition, and specialized construction services across Mecca, Jeddah, and Taif."
+    },
+    "whoWeAre": {
+      "subtitle": "Who We Are",
+      "title": "Specialized Service for Opening Doors and Windows",
+      "paragraph1": "Almohtaref is a leading provider of specialized construction services, specializing in precision concrete cutting, door and window openings, plumbing and electrical installations, and controlled demolition.",
+      "paragraph2": "Our team of experienced professionals combines cutting-edge technology with traditional craftsmanship to deliver exceptional results that exceed our clients' expectations.",
+      "paragraph3": "We understand that every project is unique, which is why we approach each job with careful planning, attention to detail, and a commitment to excellence.",
+      "projectsCompleted": "Projects Completed"
+    },
+    "timeline": {
+      "subtitle": "Our Journey",
+      "title": "Milestones & Achievements",
+      "description": "A decade of growth, innovation, and excellence in construction services",
+      "milestones": [
+        {
+          "year": "2015",
+          "title": "Foundation",
+          "description": "Almohtaref was established with a vision to revolutionize concrete cutting and demolition services in Saudi Arabia."
+        },
+        {
+          "year": "2017",
+          "title": "Expansion",
+          "description": "Expanded operations to serve Jeddah and Taif, establishing ourselves as a trusted regional service provider."
+        },
+        {
+          "year": "2019",
+          "title": "Innovation",
+          "description": "Introduced advanced precision cutting technology, enabling us to handle complex projects with minimal disruption."
+        },
+        {
+          "year": "2022",
+          "title": "Recognition",
+          "description": "Recognized as a leading service provider in Mecca, with over 500 successful projects completed."
+        },
+        {
+          "year": "2024",
+          "title": "Excellence",
+          "description": "Achieved 24-hour service guarantee, setting new industry standards for response time and quality."
+        }
+      ]
+    },
+    "missionVision": {
+      "subtitle": "Our Purpose",
+      "title": "Mission & Vision",
+      "mission": {
+        "title": "Our Mission",
+        "description": "To deliver exceptional precision cutting and construction services that exceed client expectations, while maintaining the highest standards of safety, quality, and professionalism. We are committed to being the most reliable and trusted partner in the construction industry."
+      },
+      "vision": {
+        "title": "Our Vision",
+        "description": "To become the leading provider of specialized construction services in Saudi Arabia, recognized for innovation, excellence, and unwavering commitment to customer satisfaction. We envision a future where precision and reliability set the standard for the entire industry."
+      }
+    },
+    "coreValues": {
+      "subtitle": "Why Choose Us",
+      "title": "Our Core Values",
+      "description": "The principles that guide everything we do",
+      "values": [
+        {
+          "title": "Precision",
+          "description": "We deliver exact cuts and precise workmanship, ensuring minimal waste and maximum efficiency."
+        },
+        {
+          "title": "Reliability",
+          "description": "24-hour availability means we're always ready when you need us, delivering on time, every time."
+        },
+        {
+          "title": "Quality",
+          "description": "We use only the finest equipment and maintain the highest standards in every project we undertake."
+        },
+        {
+          "title": "Expertise",
+          "description": "Our skilled team brings years of experience and continuous training to every project."
+        }
+      ]
+    },
+    "reviews": {
+      "subtitle": "Client Reviews",
+      "title": "Reviews",
+      "description": "Selections from our trusted clients' opinions in projects across Jeddah, Mecca, and Taif",
+      "testimonials": [
+        {
+          "text": "The best team I've worked with for concrete cutting. They adhered to safety and deadlines 100%. Highly professional and reliable service.",
+          "author": "Eng. Sarah Al-Harbi",
+          "company": "Jeddah Contracting Company",
+          "location": "Jeddah"
+        },
+        {
+          "text": "Air conditioner openings were completed without any cracks, and delivery was within less than 12 hours. I highly recommend them.",
+          "author": "Mohammed Al-Otaibi",
+          "company": "Residential Project Manager",
+          "location": "Mecca"
+        },
+        {
+          "text": "Outstanding precision work on our demolition project. The team was punctual, professional, and the cleanup was impeccable.",
+          "author": "Ahmed Al-Zahrani",
+          "company": "Construction Director",
+          "location": "Taif"
+        }
+      ],
+      "form": {
+        "title": "Add Review",
+        "subtitle": "Share your experience with us",
+        "name": "Your Name",
+        "namePlaceholder": "John Doe",
+        "company": "Company / Project",
+        "companyPlaceholder": "Company Name",
+        "rating": "Rating",
+        "ratingPlaceholder": "Select Rating",
+        "ratingOptions": {
+          "5": "5 Stars - Excellent",
+          "4": "4 Stars - Very Good",
+          "3": "3 Stars - Good",
+          "2": "2 Stars - Fair",
+          "1": "1 Star - Poor"
+        },
+        "message": "Your Review",
+        "messagePlaceholder": "Tell us about your experience...",
+        "submit": "Add Review"
+      }
+    },
+    "cta": {
+      "title": "Ready to Start Your Project?",
+      "description": "Let's discuss how we can help bring your vision to life with precision and excellence.",
+      "button": "Get in Touch"
+    }
+  }
+}
+
