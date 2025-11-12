@@ -23,12 +23,25 @@ export default function LanguageSwitcher() {
       }
     };
 
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && isOpen) {
+        setIsOpen(false);
+        // Return focus to button
+        const button = document.getElementById('language-switcher-button');
+        if (button) {
+          (button as HTMLButtonElement).focus();
+        }
+      }
+    };
+
     if (isOpen) {
       document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('keydown', handleKeyDown);
     }
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleKeyDown);
     };
   }, [isOpen]);
 
@@ -41,9 +54,11 @@ export default function LanguageSwitcher() {
     <div ref={dropdownRef} className="relative" dir="ltr">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-3 py-1.5 rounded-md bg-gray-800/50 hover:bg-gray-800 text-white/90 hover:text-white transition-all duration-200 border border-white/10 hover:border-white/20"
-        aria-label="Change language"
+        className="flex items-center gap-2 px-3 py-1.5 rounded-md bg-gray-800/70 hover:bg-gray-800 text-white hover:text-white transition-all duration-200 border border-white/20 hover:border-white/30 focus-visible:outline-2 focus-visible:outline-[#FFDD00] focus-visible:outline-offset-2"
+        aria-label={`Change language. Current language: ${currentLanguage.label}`}
         aria-expanded={isOpen}
+        aria-haspopup="true"
+        id="language-switcher-button"
       >
         <span className="text-sm">{currentLanguage.flag}</span>
         <span className="text-xs font-semibold uppercase tracking-wide">{currentLanguage.code}</span>
@@ -66,18 +81,24 @@ export default function LanguageSwitcher() {
       </button>
 
       {isOpen && (
-        <div className={`absolute top-full mt-2 bg-gray-900 border border-white/20 rounded-lg shadow-lg overflow-hidden z-50 min-w-[140px] ${
-          isRTL ? 'left-0' : 'right-0'
-        }`}>
+        <div 
+          role="menu"
+          aria-labelledby="language-switcher-button"
+          className={`absolute top-full mt-2 bg-gray-900 border border-white/30 rounded-lg shadow-lg overflow-hidden z-50 min-w-[140px] ${
+            isRTL ? 'left-0' : 'right-0'
+          }`}
+        >
           {languages.map((lang) => (
             <button
               key={lang.code}
+              role="menuitem"
               onClick={() => handleLanguageChange(lang.code as 'en' | 'ar')}
-              className={`w-full flex items-center gap-3 px-4 py-2.5 text-left hover:bg-gray-800 transition-colors ${
+              className={`w-full flex items-center gap-3 px-4 py-2.5 text-left hover:bg-gray-800 transition-colors focus-visible:outline-2 focus-visible:outline-[#FFDD00] focus-visible:outline-offset-2 focus-visible:bg-gray-800 ${
                 language === lang.code
                   ? 'bg-[#FFDD00]/20 text-[#FFDD00]'
-                  : 'text-white/90 hover:text-white'
+                  : 'text-white hover:text-white'
               }`}
+              aria-label={`Switch to ${lang.label}`}
             >
               <span className="text-base">{lang.flag}</span>
               <span className="text-sm font-medium">{lang.label}</span>

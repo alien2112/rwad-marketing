@@ -170,14 +170,19 @@ export default function ServicesPage() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="container mx-auto px-4 sm:px-6 md:px-10 pt-20 sm:pt-24 md:pt-28 pb-4 md:pb-6"
+        className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-10 pt-20 sm:pt-24 md:pt-28 pb-4 md:pb-6 safe-area-left safe-area-right"
         aria-label="Breadcrumb"
       >
-        <ol className={`flex items-center ${language === 'ar' ? 'space-x-reverse space-x-2' : 'space-x-2'} text-sm text-white/70`}>
+          <ol className={`flex items-center ${language === 'ar' ? 'space-x-reverse space-x-2' : 'space-x-2'} text-sm text-white/70`}>
           <li>
-            <Link href="/" className="hover:text-[#FFDD00] transition-colors focus:outline-none focus:ring-2 focus:ring-[#FFDD00] rounded">
-              {t('servicesPage.home')}
-            </Link>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Link href="/" className="hover:text-[#FFDD00] transition-colors duration-300 ease-out focus:outline-none focus:ring-2 focus:ring-[#FFDD00] rounded">
+                {t('servicesPage.home')}
+              </Link>
+            </motion.div>
           </li>
           <li aria-hidden="true">
             <span className="mx-2">/</span>
@@ -189,7 +194,7 @@ export default function ServicesPage() {
       </motion.nav>
 
       {/* Hero Section */}
-      <section className="container mx-auto px-4 sm:px-6 md:px-10 py-8 sm:py-12 md:py-20">
+      <section className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-6 sm:py-8 md:py-12 lg:py-16 xl:py-20 safe-area-left safe-area-right">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -210,23 +215,23 @@ export default function ServicesPage() {
             <div className={`w-10 h-px bg-white/30 ${language === 'ar' ? 'mr-4' : 'ml-4'}`} />
           </motion.div>
 
-          <h1 className="font-arkes text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 md:mb-6 text-white">
+          <h1 className="font-arkes text-[clamp(1.875rem,6vw,4.375rem)] font-bold mb-4 sm:mb-5 md:mb-6 text-white text-overflow-safe">
             {t('servicesPage.ourServices')}
           </h1>
-          <p className="text-lg md:text-xl text-white/80 leading-relaxed max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-white/80 leading-relaxed max-w-[min(42rem,90vw)] mx-auto text-overflow-safe" style={{ fontSize: 'clamp(1rem, 2.5vw, 1.25rem)' }}>
             {t('servicesPage.heroDescription')}
           </p>
         </motion.div>
       </section>
 
       {/* Services Grid */}
-      <section className="container mx-auto px-4 sm:px-6 md:px-10 py-8 sm:py-12 md:py-20 pb-24 sm:pb-32 md:pb-40">
+      <section className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-8 sm:py-12 md:py-16 lg:py-20 pb-16 sm:pb-24 md:pb-32 lg:pb-40 safe-area-left safe-area-right">
         {loading ? (
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-12 lg:gap-14"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 lg:gap-10 xl:gap-14"
           >
             <SkeletonLoader variant="service" count={6} />
           </motion.div>
@@ -246,21 +251,45 @@ export default function ServicesPage() {
                 onMouseEnter={() => setHoveredCard(service._id)}
                 onMouseLeave={() => setHoveredCard(null)}
               >
-                <div className="h-full bg-[#111114] rounded-xl border border-white/10 p-4 sm:p-6 md:p-8 transition-all duration-300 hover:border-[#FFDD00]/50 hover:shadow-[0_0_30px_rgba(255,221,0,0.2)]">
+                <motion.div 
+                  whileHover={{ 
+                    y: -6,
+                    scale: 1.02,
+                    borderColor: 'rgba(255, 221, 0, 0.5)',
+                    boxShadow: '0 20px 40px rgba(255, 221, 0, 0.2)'
+                  }}
+                  transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                  className="h-full bg-[#111114] rounded-xl border border-white/10 p-4 sm:p-6 md:p-8 transition-all duration-300 cursor-default"
+                >
                   {/* Icon Container */}
                   <div className="mb-6 relative">
-                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-lg bg-white/5 border border-white/10 group-hover:bg-[#FFDD00]/10 group-hover:border-[#FFDD00]/30 transition-all duration-300">
-                      <div className="text-white group-hover:text-[#FFDD00] transition-colors duration-300">
+                    <motion.div 
+                      whileHover={{ 
+                        scale: 1.15,
+                        rotate: 5,
+                        backgroundColor: 'rgba(255, 221, 0, 0.1)',
+                        borderColor: 'rgba(255, 221, 0, 0.3)'
+                      }}
+                      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                      className="inline-flex items-center justify-center w-16 h-16 rounded-lg bg-white/5 border border-white/10 transition-all duration-300"
+                    >
+                      <motion.div 
+                        className="text-white transition-colors duration-300"
+                        whileHover={{ color: '#FFDD00' }}
+                      >
                         {getIcon(service.icon)}
-                      </div>
-                    </div>
+                      </motion.div>
+                    </motion.div>
                   </div>
 
                   {/* Content */}
                   <div className="flex flex-col h-full">
-                    <h3 className="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-[#FFDD00] transition-colors duration-300">
+                    <motion.h3 
+                      className="text-xl md:text-2xl font-bold text-white mb-3 transition-colors duration-300"
+                      whileHover={{ color: '#FFDD00' }}
+                    >
                       {language === 'ar' ? service.titleAr : service.title}
-                    </h3>
+                    </motion.h3>
                     <p className="text-white/70 mb-6 flex-grow leading-relaxed">
                       {language === 'ar' ? service.descriptionAr : service.description}
                     </p>
@@ -284,22 +313,30 @@ export default function ServicesPage() {
                       </ul>
                     )}
                     
-                    <Link
-                      href="/contact"
-                      className="inline-flex items-center justify-center px-6 py-3 bg-transparent border-2 border-white/20 text-white rounded-lg font-semibold hover:bg-[#FFDD00] hover:border-[#FFDD00] hover:text-black transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#FFDD00] focus:ring-offset-2 focus:ring-offset-black"
-                      aria-label={`${t('servicesPage.learnMore')} ${service.title}`}
+                    <motion.div
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      transition={{ duration: 0.2 }}
                     >
-                      <span>{t('servicesPage.learnMore')}</span>
-                      <svg
-                        className={`w-5 h-5 ${language === 'ar' ? 'mr-2' : 'ml-2'} transform group-hover:translate-x-1 transition-transform duration-300`}
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        aria-hidden="true"
+                      <Link
+                        href="/contact"
+                        className="inline-flex items-center justify-center px-6 py-3 bg-transparent border-2 border-white/20 text-white rounded-lg font-semibold hover:bg-[#FFDD00] hover:border-[#FFDD00] hover:text-black transition-all duration-300 ease-out focus:outline-none focus:ring-2 focus:ring-[#FFDD00] focus:ring-offset-2 focus:ring-offset-black"
+                        aria-label={`${t('servicesPage.learnMore')} ${service.title}`}
                       >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={language === 'ar' ? "M15 19l-7-7 7-7" : "M9 5l7 7-7 7"} />
-                      </svg>
-                    </Link>
+                        <span>{t('servicesPage.learnMore')}</span>
+                        <motion.svg
+                          className={`w-5 h-5 ${language === 'ar' ? 'mr-2' : 'ml-2'}`}
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          aria-hidden="true"
+                          whileHover={{ x: language === 'ar' ? -4 : 4 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={language === 'ar' ? "M15 19l-7-7 7-7" : "M9 5l7 7-7 7"} />
+                        </motion.svg>
+                      </Link>
+                    </motion.div>
                   </div>
 
                   {/* Hover Glow Effect */}
@@ -309,10 +346,10 @@ export default function ServicesPage() {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
-                      transition={{ duration: 0.3 }}
+                      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                     />
                   )}
-                </div>
+                </motion.div>
               </motion.div>
             ))}
           </motion.div>
@@ -320,7 +357,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Featured Services Section */}
-      <section className="container mx-auto px-4 md:px-10 py-12 md:py-20 pb-32 md:pb-40">
+      <section className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-10 sm:py-12 md:py-16 lg:py-20 pb-20 sm:pb-24 md:pb-32 lg:pb-40 safe-area-left safe-area-right">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -335,10 +372,10 @@ export default function ServicesPage() {
             </span>
             <div className={`w-10 h-px bg-white/30 ${language === 'ar' ? 'mr-4' : 'ml-4'}`} />
           </div>
-          <h2 className="font-arkes text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+          <h2 className="font-arkes text-[clamp(2rem,6vw,3.75rem)] font-bold text-white mb-3 sm:mb-4 text-overflow-safe">
             {t('servicesPage.featuredServices')}
           </h2>
-          <p className="text-white/80 max-w-2xl mx-auto text-lg">
+          <p className="text-white/80 max-w-[min(42rem,90vw)] mx-auto text-base sm:text-lg text-overflow-safe" style={{ fontSize: 'clamp(1rem, 2.5vw, 1.125rem)' }}>
             {t('servicesPage.featuredDescription')}
           </p>
         </motion.div>
@@ -356,17 +393,39 @@ export default function ServicesPage() {
               } items-center gap-8 md:gap-12`}
             >
               <div className="flex-1 w-full">
-                <div className="bg-[#111114] rounded-xl p-8 md:p-10 border border-white/10">
+                <motion.div 
+                  whileHover={{ 
+                    scale: 1.02,
+                    borderColor: 'rgba(255, 221, 0, 0.3)'
+                  }}
+                  transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                  className="bg-[#111114] rounded-xl p-8 md:p-10 border border-white/10 transition-all duration-300"
+                >
                   <div className="mb-6">
-                    <div className="inline-flex items-center justify-center w-20 h-20 rounded-lg bg-white/5 border border-white/10">
-                      <div className="text-white">
+                    <motion.div 
+                      whileHover={{ 
+                        scale: 1.1,
+                        rotate: 5,
+                        backgroundColor: 'rgba(255, 221, 0, 0.1)',
+                        borderColor: 'rgba(255, 221, 0, 0.3)'
+                      }}
+                      transition={{ duration: 0.3 }}
+                      className="inline-flex items-center justify-center w-20 h-20 rounded-lg bg-white/5 border border-white/10 transition-all duration-300"
+                    >
+                      <motion.div 
+                        className="text-white transition-colors duration-300"
+                        whileHover={{ color: '#FFDD00' }}
+                      >
                         {getIcon(service.icon)}
-                      </div>
-                    </div>
+                      </motion.div>
+                    </motion.div>
                   </div>
-                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                  <motion.h3 
+                    className="text-2xl md:text-3xl font-bold text-white mb-4 transition-colors duration-300"
+                    whileHover={{ color: '#FFDD00' }}
+                  >
                     {language === 'ar' ? service.titleAr : service.title}
-                  </h3>
+                  </motion.h3>
                   <p className="text-white/70 mb-6 text-lg leading-relaxed">
                     {language === 'ar' ? service.descriptionAr : service.description}
                   </p>
@@ -388,31 +447,47 @@ export default function ServicesPage() {
                       ))}
                     </ul>
                   )}
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center px-8 py-4 bg-[#FFDD00] text-black rounded-lg font-semibold hover:bg-[#FFDD00]/90 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#FFDD00] focus:ring-offset-2 focus:ring-offset-black"
-                    aria-label={`${t('servicesPage.bookNow')} ${service.title}`}
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    transition={{ duration: 0.2 }}
                   >
-                    <span>{t('servicesPage.bookNow')}</span>
-                    <svg
-                      className={`w-5 h-5 ${language === 'ar' ? 'mr-2' : 'ml-2'}`}
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      aria-hidden="true"
+                    <Link
+                      href="/contact"
+                      className="inline-flex items-center px-8 py-4 bg-[#FFDD00] text-black rounded-lg font-semibold hover:bg-[#FFDD00]/90 transition-all duration-300 ease-out focus:outline-none focus:ring-2 focus:ring-[#FFDD00] focus:ring-offset-2 focus:ring-offset-black"
+                      aria-label={`${t('servicesPage.bookNow')} ${service.title}`}
                     >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={language === 'ar' ? "M15 19l-7-7 7-7" : "M9 5l7 7-7 7"} />
-                    </svg>
-                  </Link>
-                </div>
+                      <span>{t('servicesPage.bookNow')}</span>
+                      <motion.svg
+                        className={`w-5 h-5 ${language === 'ar' ? 'mr-2' : 'ml-2'}`}
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        aria-hidden="true"
+                        whileHover={{ x: language === 'ar' ? -4 : 4 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={language === 'ar' ? "M15 19l-7-7 7-7" : "M9 5l7 7-7 7"} />
+                      </motion.svg>
+                    </Link>
+                  </motion.div>
+                </motion.div>
               </div>
               <div className="flex-1 w-full">
-                <div className="relative bg-gradient-to-br from-[#111114] to-black rounded-xl h-64 md:h-96 flex items-center justify-center border border-white/10 overflow-hidden">
+                <motion.div 
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                  className="relative bg-gradient-to-br from-[#111114] to-black rounded-xl h-64 md:h-96 flex items-center justify-center border border-white/10 overflow-hidden"
+                >
                   <div className="absolute inset-0 bg-gradient-to-br from-[#FFDD00]/10 to-transparent" />
-                  <div className="relative z-10 text-white/20 scale-150">
+                  <motion.div 
+                    className="relative z-10 text-white/20 scale-150"
+                    whileHover={{ scale: 1.2, rotate: 5 }}
+                    transition={{ duration: 0.3 }}
+                  >
                     {getIcon(service.icon)}
-                  </div>
-                </div>
+                  </motion.div>
+                </motion.div>
               </div>
             </motion.div>
           ))}
@@ -420,48 +495,65 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="container mx-auto px-4 md:px-10 py-16 md:py-24 pb-32 md:pb-40">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="relative bg-gradient-to-br from-[#111114] to-black rounded-2xl p-8 md:p-12 text-center border border-white/10 overflow-hidden"
-        >
+      <section className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-12 sm:py-16 md:py-20 lg:py-24 pb-20 sm:pb-24 md:pb-32 lg:pb-40 safe-area-left safe-area-right">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              whileHover={{ 
+                scale: 1.01,
+                borderColor: 'rgba(255, 221, 0, 0.3)',
+                boxShadow: '0 20px 40px rgba(255, 221, 0, 0.15)'
+              }}
+              className="relative bg-gradient-to-br from-[#111114] to-black rounded-2xl p-8 md:p-12 text-center border border-white/10 overflow-hidden transition-all duration-300"
+            >
           {/* Background Pattern */}
           <div className="absolute inset-0 opacity-5">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(255,221,0,0.1)_0%,_transparent_50%)]" />
           </div>
           
           <div className="relative z-10">
-            <h2 className="font-arkes text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
+            <h2 className="font-arkes text-[clamp(1.875rem,5vw,3rem)] font-bold text-white mb-3 sm:mb-4 text-overflow-safe">
               {t('servicesPage.readyToGetStarted')}
             </h2>
-            <p className="text-white/80 text-lg md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-white/80 text-base sm:text-lg md:text-xl mb-8 sm:mb-10 max-w-[min(42rem,90vw)] mx-auto leading-relaxed text-overflow-safe" style={{ fontSize: 'clamp(1rem, 2.5vw, 1.25rem)' }}>
               {t('servicesPage.ctaDescription')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 bg-[#FFDD00] text-black rounded-lg font-semibold hover:bg-[#FFDD00]/90 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#FFDD00] focus:ring-offset-2 focus:ring-offset-black transform hover:scale-105"
-                aria-label={t('servicesPage.getAQuote')}
+              <motion.div
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
               >
-                {t('servicesPage.getAQuote')}
-              </Link>
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-white/30 text-white rounded-lg font-semibold hover:bg-white/10 hover:border-white/50 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black"
-                aria-label={t('servicesPage.contactUs')}
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-[#FFDD00] text-black rounded-lg font-semibold hover:bg-[#FFDD00]/90 transition-all duration-300 ease-out focus:outline-none focus:ring-2 focus:ring-[#FFDD00] focus:ring-offset-2 focus:ring-offset-black"
+                  aria-label={t('servicesPage.getAQuote')}
+                >
+                  {t('servicesPage.getAQuote')}
+                </Link>
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
               >
-                {t('servicesPage.contactUs')}
-              </Link>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-white/30 text-white rounded-lg font-semibold hover:bg-white/10 hover:border-white/50 transition-all duration-300 ease-out focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black"
+                  aria-label={t('servicesPage.contactUs')}
+                >
+                  {t('servicesPage.contactUs')}
+                </Link>
+              </motion.div>
             </div>
           </div>
         </motion.div>
       </section>
 
       {/* Testimonials Section */}
-      <section className="container mx-auto px-4 md:px-10 py-12 md:py-20 pb-32 md:pb-40">
+      <section className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-10 sm:py-12 md:py-16 lg:py-20 pb-20 sm:pb-24 md:pb-32 lg:pb-40 safe-area-left safe-area-right">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -476,10 +568,10 @@ export default function ServicesPage() {
             </span>
             <div className={`w-10 h-px bg-white/30 ${language === 'ar' ? 'mr-4' : 'ml-4'}`} />
           </div>
-          <h2 className="font-arkes text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+          <h2 className="font-arkes text-[clamp(2rem,6vw,3.75rem)] font-bold text-white mb-3 sm:mb-4 text-overflow-safe">
             {t('servicesPage.trustedByProfessionals')}
           </h2>
-          <p className="text-white/80 text-lg">
+          <p className="text-white/80 text-base sm:text-lg text-overflow-safe" style={{ fontSize: 'clamp(1rem, 2.5vw, 1.125rem)' }}>
             {t('servicesPage.testimonialsDescription')}
           </p>
         </motion.div>
@@ -495,19 +587,30 @@ export default function ServicesPage() {
             <motion.div
               key={index}
               variants={itemVariants}
-              className="bg-[#111114] rounded-xl p-6 md:p-8 border border-white/10 hover:border-[#FFDD00]/30 transition-all duration-300"
+              whileHover={{ 
+                y: -6,
+                scale: 1.02,
+                borderColor: 'rgba(255, 221, 0, 0.5)',
+                boxShadow: '0 12px 24px rgba(255, 221, 0, 0.15)'
+              }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              className="bg-[#111114] rounded-xl p-6 md:p-8 border border-white/10 transition-all duration-300 cursor-default"
             >
               <div className="flex items-center mb-4" aria-label="5 out of 5 stars">
                 {[...Array(5)].map((_, i) => (
-                  <svg
+                  <motion.svg
                     key={i}
                     className="w-5 h-5 text-[#FFDD00]"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                     aria-hidden="true"
+                    initial={{ scale: 0, rotate: -180 }}
+                    animate={{ scale: 1, rotate: 0 }}
+                    transition={{ delay: i * 0.1, type: 'spring', stiffness: 200 }}
+                    whileHover={{ scale: 1.2, rotate: 10 }}
                   >
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
+                  </motion.svg>
                 ))}
               </div>
               <blockquote className="text-white/80 mb-6 italic leading-relaxed">

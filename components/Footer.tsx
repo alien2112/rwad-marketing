@@ -6,7 +6,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 export default function Footer() {
   const { t } = useLanguage();
   return (
-    <footer className="relative bg-black text-white px-4 sm:px-6 md:px-10 pt-10 sm:pt-12 md:pt-14 pb-32 sm:pb-36 md:pb-40 border-t border-[#0f0f10]/90 overflow-hidden">
+    <footer className="relative bg-black text-white px-4 sm:px-6 md:px-8 lg:px-10 pt-8 sm:pt-10 md:pt-12 lg:pt-14 pb-24 sm:pb-28 md:pb-32 lg:pb-36 xl:pb-40 border-t border-[#0f0f10]/90 overflow-hidden safe-area-left safe-area-right safe-area-bottom">
       {/* Gold glow at the very bottom */}
       <div
         aria-hidden="true"
@@ -18,10 +18,10 @@ export default function Footer() {
         }}
       />
 
-      <div className="relative max-w-[1400px] mx-auto">
+      <div className="relative max-w-[min(1400px,95vw)] mx-auto">
         {/* Top: Social */}
         <div className="mb-8 md:mb-10">
-          <h3 className="text-xs sm:text-sm tracking-wide text-white/80 mb-3 md:mb-4">{t('footer.social')}</h3>
+          <h3 className="text-xs sm:text-sm tracking-wide text-white/90 mb-3 md:mb-4">{t('footer.social')}</h3>
           <div className="flex items-center gap-3 sm:gap-4 md:gap-5">
             {/* Facebook */}
             <Link
@@ -110,10 +110,10 @@ export default function Footer() {
         </div>
 
         {/* Divider and bottom row */}
-        <div className="border-t border-[#0f0f10]/90 pt-4 md:pt-6 flex flex-col md:flex-row items-center justify-between gap-3 md:gap-4">
-          <p className="text-white/70 text-xs sm:text-sm text-center md:text-left">
+        <div className="border-t border-white/20 pt-4 md:pt-6 flex flex-col md:flex-row items-center justify-between gap-3 md:gap-4">
+          <p className="text-white/85 text-xs sm:text-sm text-center md:text-left">
             {t('footer.copyright')}{' '}
-            <Link href="/terms-and-conditions" className="hover:text-white transition-colors">
+            <Link href="/terms-and-conditions" className="hover:text-white transition-colors text-white/90">
               {t('footer.terms')}
             </Link>
           </p>

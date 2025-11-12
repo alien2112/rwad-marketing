@@ -27,3 +27,4 @@ const BannerSchema: Schema = new Schema(
 
 export default mongoose.models.Banner || mongoose.model<IBanner>('Banner', BannerSchema);
 
+

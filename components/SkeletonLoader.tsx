@@ -49,7 +49,7 @@ export function TestimonialSkeleton() {
 
 export function ProjectSkeleton() {
   return (
-    <div className="group relative bg-[#111114] rounded-3xl overflow-hidden border border-white/20 flex flex-col">
+    <div className="group relative bg-[#111114] rounded-3xl overflow-hidden border border-white/30 flex flex-col">
       {/* Image skeleton */}
       <div className="relative w-full h-64 bg-gray-800 skeleton-shimmer">
         <div className="absolute top-4 right-4 w-16 h-6 bg-gray-700 rounded-full skeleton-shimmer" />
@@ -77,7 +77,7 @@ export function ProjectSkeleton() {
 
 export function ServiceSkeleton() {
   return (
-    <div className="h-full bg-[#111114] rounded-xl border border-white/10 p-4 sm:p-6 md:p-8">
+    <div className="h-full bg-[#111114] rounded-xl border border-white/20 p-4 sm:p-6 md:p-8">
       <div className="space-y-6">
         {/* Icon skeleton */}
         <div>

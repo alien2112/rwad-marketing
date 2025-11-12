@@ -223,7 +223,7 @@ export default function AboutUs() {
       <ScrollProgress />
       
       {/* Hero Section with Parallax */}
-      <section ref={heroRef} className="relative min-h-[60vh] md:min-h-[80vh] flex items-center justify-center overflow-hidden bg-black">
+      <section ref={heroRef} className="relative min-h-[50vh] sm:min-h-[60vh] md:min-h-[70vh] lg:min-h-[80vh] flex items-center justify-center overflow-hidden bg-black safe-area-left safe-area-right">
         <motion.div
           style={{ y: heroY }}
           className="absolute inset-0"
@@ -268,7 +268,7 @@ export default function AboutUs() {
         
         <motion.div
           style={{ opacity: heroOpacity }}
-          className="relative z-10 w-full max-w-[1400px] px-4 sm:px-6 md:px-10 py-12 sm:py-16 md:py-20 lg:py-32 text-center"
+          className="relative z-10 w-full max-w-[min(1400px,95vw)] px-4 sm:px-6 md:px-8 lg:px-10 py-8 sm:py-12 md:py-16 lg:py-24 xl:py-32 text-center safe-area-left safe-area-right"
         >
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -283,11 +283,11 @@ export default function AboutUs() {
             >
               <div className="w-6 sm:w-8 h-px bg-[#FFDD00] origin-left" />
               <AnimatedText type="fade" delay={0.3}>
-                <span className="text-xs sm:text-sm uppercase tracking-wider text-white/70">{t('aboutUs.hero.subtitle')}</span>
+                <span className="text-xs sm:text-sm uppercase tracking-wider text-white/85">{t('aboutUs.hero.subtitle')}</span>
               </AnimatedText>
               <div className="w-6 sm:w-8 h-px bg-[#FFDD00] origin-right" />
             </motion.div>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 tracking-tight">
+            <h1 className="text-[clamp(1.875rem,7vw,4.375rem)] font-bold mb-4 sm:mb-5 md:mb-6 tracking-tight text-overflow-safe">
               <AnimatedText type="word" delay={0.4} className="block">
                 {t('aboutUs.hero.title')}
               </AnimatedText>
@@ -297,7 +297,7 @@ export default function AboutUs() {
               </AnimatedText>
             </h1>
             <AnimatedText type="fade" delay={0.8}>
-              <p className="text-base sm:text-lg md:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed px-4">
+              <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/80 max-w-[min(48rem,90vw)] mx-auto leading-relaxed px-4 text-overflow-safe" style={{ fontSize: 'clamp(0.875rem, 2.5vw, 1.25rem)' }}>
                 {t('aboutUs.hero.description')}
               </p>
             </AnimatedText>
@@ -319,8 +319,8 @@ export default function AboutUs() {
       </section>
 
       {/* Statistics Section */}
-      <section className="py-12 sm:py-16 md:py-20 lg:py-28 px-4 sm:px-6 md:px-10 bg-gradient-to-b from-black via-gray-900 to-black text-white">
-        <div className="max-w-[1400px] mx-auto">
+      <section className="py-10 sm:py-12 md:py-16 lg:py-20 xl:py-28 px-4 sm:px-6 md:px-8 lg:px-10 bg-gradient-to-b from-black via-gray-900 to-black text-white safe-area-left safe-area-right">
+        <div className="max-w-[min(1400px,95vw)] mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -330,33 +330,39 @@ export default function AboutUs() {
           >
             <div className="inline-flex items-center gap-2 mb-4">
               <div className="w-8 h-px bg-[#FFDD00]" />
-              <span className="text-sm uppercase tracking-wider text-white/70">Achievements</span>
+              <span className="text-sm uppercase tracking-wider text-white/85">{t('aboutUs.statistics.subtitle')}</span>
               <div className="w-8 h-px bg-[#FFDD00]" />
             </div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">Our Impact in Numbers</h2>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">{t('aboutUs.statistics.title')}</h2>
           </motion.div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             {[
-              { value: 500, suffix: '+', label: 'Projects Completed' },
-              { value: 10, suffix: '+', label: 'Years Experience' },
-              { value: 24, suffix: '/7', label: 'Hour Service' },
-              { value: 100, suffix: '%', label: 'Client Satisfaction' },
+              { value: 500, suffix: '+', labelKey: 'projectsCompleted' },
+              { value: 10, suffix: '+', labelKey: 'yearsExperience' },
+              { value: 24, suffix: '/7', labelKey: 'hourService' },
+              { value: 100, suffix: '%', labelKey: 'clientSatisfaction' },
             ].map((stat, index) => (
               <motion.div
-                key={stat.label}
+                key={stat.labelKey}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="text-center p-6 bg-gradient-to-br from-gray-900 to-black rounded-2xl border border-gray-800 hover:border-[#FFDD00]/50 transition-all duration-300 card-lift"
+                whileHover={{ 
+                  y: -8, 
+                  scale: 1.02,
+                  borderColor: 'rgba(255, 221, 0, 0.5)',
+                  boxShadow: '0 20px 40px rgba(255, 221, 0, 0.15)'
+                }}
+                className="text-center p-6 bg-gradient-to-br from-gray-900 to-black rounded-2xl border border-gray-800 transition-all duration-300 ease-out cursor-default"
               >
                 <NumberCounter
                   value={stat.value}
                   suffix={stat.suffix}
                   className="text-4xl md:text-5xl font-bold text-[#FFDD00] mb-2"
                 />
-                <p className="text-sm md:text-base text-white/70 uppercase tracking-wide">{stat.label}</p>
+                <p className="text-sm md:text-base text-white/85 uppercase tracking-wide">{t(`aboutUs.statistics.stats.${stat.labelKey}`)}</p>
               </motion.div>
             ))}
           </div>
@@ -364,8 +370,8 @@ export default function AboutUs() {
       </section>
 
       {/* Who We Are Section */}
-      <section className="py-12 sm:py-16 md:py-20 lg:py-28 px-4 sm:px-6 md:px-10 bg-black text-white">
-        <div className="max-w-[1400px] mx-auto">
+      <section className="py-10 sm:py-12 md:py-16 lg:py-20 xl:py-28 px-4 sm:px-6 md:px-8 lg:px-10 bg-black text-white safe-area-left safe-area-right">
+        <div className="max-w-[min(1400px,95vw)] mx-auto">
           <div className="grid md:grid-cols-2 gap-8 sm:gap-12 md:gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -381,7 +387,7 @@ export default function AboutUs() {
                   transition={{ duration: 0.6 }}
                   className="h-px bg-[#FFDD00]"
                 />
-                <span className="text-sm uppercase tracking-wider text-white/70">{t('aboutUs.whoWeAre.subtitle')}</span>
+                <span className="text-sm uppercase tracking-wider text-white/85">{t('aboutUs.whoWeAre.subtitle')}</span>
               </div>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
                 <AnimatedText type="word" delay={0.1}>
@@ -428,9 +434,9 @@ export default function AboutUs() {
             >
               <div className="grid grid-cols-2 gap-4">
                 {[
-                  { src: '/WhatsApp Image 2025-11-11 at 18.29.40_7cb1596f.webp', alt: 'Specialized door and window opening service', delay: 0, className: '' },
-                  { src: '/WhatsApp Image 2025-11-11 at 18.29.40_f2ca1be1.webp', alt: 'Precise plumbing and electrical installation work', delay: 0.1, className: 'mt-8' },
-                  { src: '/DeliberateService.webp', alt: 'Professional concrete cutting and demolition service', delay: 0.2, className: '-mt-8' },
+                  { src: '/WhatsApp Image 2025-11-11 at 18.29.40_7cb1596f.webp', altKey: 'doorWindowOpening', delay: 0, className: '' },
+                  { src: '/WhatsApp Image 2025-11-11 at 18.29.40_f2ca1be1.webp', altKey: 'plumbingElectrical', delay: 0.1, className: 'mt-8' },
+                  { src: '/DeliberateService.webp', altKey: 'concreteCutting', delay: 0.2, className: '-mt-8' },
                   { src: null, delay: 0.3, className: '' },
                 ].map((item, index) => (
                   <motion.div
@@ -439,16 +445,22 @@ export default function AboutUs() {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: item.delay }}
-                    className={`relative aspect-square rounded-xl overflow-hidden border border-gray-800 image-zoom grayscale-to-color ${item.className}`}
+                    className={`relative aspect-square rounded-xl overflow-hidden border border-gray-800 ${item.className}`}
                   >
                     {item.src ? (
-                      <Image
-                        src={item.src}
-                        alt={item.alt || ''}
-                        fill
-                        sizes="(min-width: 768px) 50vw, 50vw"
-                        className="object-cover"
-                      />
+                      <motion.div
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                        className="relative w-full h-full"
+                      >
+                        <Image
+                          src={item.src}
+                          alt={item.altKey ? t(`aboutUs.whoWeAre.images.${item.altKey}`) : ''}
+                          fill
+                          sizes="(min-width: 768px) 50vw, 50vw"
+                          className="object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                        />
+                      </motion.div>
                     ) : (
                       <div className="absolute inset-0 bg-gradient-to-br from-[#FFDD00]/20 to-transparent flex items-center justify-center">
                         <div className="text-center p-6">
@@ -470,8 +482,8 @@ export default function AboutUs() {
       </section>
 
       {/* Timeline Section */}
-      <section className="py-12 sm:py-16 md:py-20 lg:py-28 px-4 sm:px-6 md:px-10 bg-black text-white relative">
-        <div className="max-w-[1400px] mx-auto">
+      <section className="py-10 sm:py-12 md:py-16 lg:py-20 xl:py-28 px-4 sm:px-6 md:px-8 lg:px-10 bg-black text-white relative safe-area-left safe-area-right">
+        <div className="max-w-[min(1400px,95vw)] mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -481,11 +493,11 @@ export default function AboutUs() {
           >
             <div className="inline-flex items-center gap-2 mb-4">
               <div className="w-8 h-px bg-[#FFDD00]" />
-              <span className="text-sm uppercase tracking-wider text-white/70">{t('aboutUs.timeline.subtitle')}</span>
+              <span className="text-sm uppercase tracking-wider text-white/85">{t('aboutUs.timeline.subtitle')}</span>
               <div className="w-8 h-px bg-[#FFDD00]" />
             </div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">{t('aboutUs.timeline.title')}</h2>
-            <p className="text-white/70 max-w-2xl mx-auto">
+            <p className="text-white/85 max-w-2xl mx-auto">
               {t('aboutUs.timeline.description')}
             </p>
           </motion.div>
@@ -530,8 +542,14 @@ export default function AboutUs() {
                   {/* Content Card */}
                   <div className={`md:w-1/2 ${index % 2 === 0 ? 'md:pl-12' : 'md:pr-12'}`}>
                     <motion.div
-                      whileHover={{ scale: 1.02, borderColor: 'rgba(255, 221, 0, 0.5)' }}
-                      className="bg-gray-900 rounded-xl p-6 border border-gray-800 transition-all duration-300 card-lift"
+                      whileHover={{ 
+                        scale: 1.03, 
+                        borderColor: 'rgba(255, 221, 0, 0.5)',
+                        y: -4,
+                        boxShadow: '0 12px 24px rgba(255, 221, 0, 0.15)'
+                      }}
+                      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                      className="bg-gray-900 rounded-xl p-6 border border-gray-800 transition-all duration-300 cursor-default"
                     >
                       <h3 className="text-xl font-bold mb-2 text-[#FFDD00]">{milestone.title}</h3>
                       <p className="text-white/80 leading-relaxed">{milestone.description}</p>
@@ -545,8 +563,8 @@ export default function AboutUs() {
       </section>
 
       {/* Mission & Vision Section */}
-      <section className="py-12 sm:py-16 md:py-20 lg:py-28 px-4 sm:px-6 md:px-10 bg-gradient-to-b from-black to-gray-900 text-white">
-        <div className="max-w-[1400px] mx-auto">
+      <section className="py-10 sm:py-12 md:py-16 lg:py-20 xl:py-28 px-4 sm:px-6 md:px-8 lg:px-10 bg-gradient-to-b from-black to-gray-900 text-white safe-area-left safe-area-right">
+        <div className="max-w-[min(1400px,95vw)] mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -556,7 +574,7 @@ export default function AboutUs() {
           >
             <div className="inline-flex items-center gap-2 mb-4">
               <div className="w-8 h-px bg-[#FFDD00]" />
-              <span className="text-sm uppercase tracking-wider text-white/70">{t('aboutUs.missionVision.subtitle')}</span>
+              <span className="text-sm uppercase tracking-wider text-white/85">{t('aboutUs.missionVision.subtitle')}</span>
               <div className="w-8 h-px bg-[#FFDD00]" />
             </div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">{t('aboutUs.missionVision.title')}</h2>
@@ -596,18 +614,29 @@ export default function AboutUs() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{ duration: 0.6, delay: item.delay }}
-                whileHover={{ y: -5, scale: 1.02 }}
-                className="relative bg-gradient-to-br from-gray-900 to-black rounded-2xl p-8 md:p-10 border border-gray-800 hover:border-[#FFDD00]/50 transition-all duration-300 overflow-hidden card-lift"
+                whileHover={{ 
+                  y: -6, 
+                  scale: 1.02,
+                  borderColor: 'rgba(255, 221, 0, 0.5)',
+                  boxShadow: '0 20px 40px rgba(255, 221, 0, 0.15)',
+                  transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] }
+                }}
+                className="relative bg-gradient-to-br from-gray-900 to-black rounded-2xl p-8 md:p-10 border border-gray-800 transition-all duration-300 overflow-hidden cursor-default"
               >
-                <motion.div
-                  initial={{ scale: 0, rotate: -180 }}
-                  whileInView={{ scale: 1, rotate: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: item.delay + 0.2, type: 'spring', stiffness: 150 }}
-                  className={`absolute top-6 right-6 w-16 h-16 rounded-xl bg-gradient-to-br ${item.gradient} flex items-center justify-center icon-bounce`}
-                >
-                  {item.icon}
-                </motion.div>
+                  <motion.div
+                    initial={{ scale: 0, rotate: -180 }}
+                    whileInView={{ scale: 1, rotate: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: item.delay + 0.2, type: 'spring', stiffness: 150 }}
+                    whileHover={{ 
+                      scale: 1.15, 
+                      rotate: 5,
+                      transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] }
+                    }}
+                    className={`absolute top-6 right-6 w-16 h-16 rounded-xl bg-gradient-to-br ${item.gradient} flex items-center justify-center transition-transform duration-300`}
+                  >
+                    {item.icon}
+                  </motion.div>
                 <h3 className="text-2xl md:text-3xl font-bold mb-4 text-[#FFDD00]">{item.title}</h3>
                 <p className="text-lg text-white/80 leading-relaxed">{item.description}</p>
               </motion.div>
@@ -617,8 +646,8 @@ export default function AboutUs() {
       </section>
 
       {/* Why Choose Us / Core Values Section */}
-      <section className="py-12 sm:py-16 md:py-20 lg:py-28 px-4 sm:px-6 md:px-10 bg-black text-white">
-        <div className="max-w-[1400px] mx-auto">
+      <section className="py-10 sm:py-12 md:py-16 lg:py-20 xl:py-28 px-4 sm:px-6 md:px-8 lg:px-10 bg-black text-white safe-area-left safe-area-right">
+        <div className="max-w-[min(1400px,95vw)] mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -628,11 +657,11 @@ export default function AboutUs() {
           >
             <div className="inline-flex items-center gap-2 mb-4">
               <div className="w-8 h-px bg-[#FFDD00]" />
-              <span className="text-sm uppercase tracking-wider text-white/70">{t('aboutUs.coreValues.subtitle')}</span>
+              <span className="text-sm uppercase tracking-wider text-white/85">{t('aboutUs.coreValues.subtitle')}</span>
               <div className="w-8 h-px bg-[#FFDD00]" />
             </div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">{t('aboutUs.coreValues.title')}</h2>
-            <p className="text-white/70 max-w-2xl mx-auto">
+            <p className="text-white/85 max-w-2xl mx-auto">
               {t('aboutUs.coreValues.description')}
             </p>
           </motion.div>
@@ -644,9 +673,15 @@ export default function AboutUs() {
                 initial={{ opacity: 0, y: 30, rotateY: -15 }}
                 whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -8, scale: 1.03, rotateY: 5 }}
-                className="group relative bg-gradient-to-br from-gray-900 to-black rounded-2xl p-6 border border-gray-800 hover:border-[#FFDD00]/50 transition-all duration-300 overflow-hidden card-lift"
+                transition={{ duration: 0.3, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ 
+                  y: -10, 
+                  scale: 1.04, 
+                  rotateY: 5,
+                  borderColor: 'rgba(255, 221, 0, 0.5)',
+                  boxShadow: '0 20px 40px rgba(255, 221, 0, 0.2)'
+                }}
+                className="group relative bg-gradient-to-br from-gray-900 to-black rounded-2xl p-6 border border-gray-800 transition-all duration-300 overflow-hidden cursor-default"
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${value.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
                 
@@ -656,17 +691,24 @@ export default function AboutUs() {
                     whileInView={{ scale: 1, rotate: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 + 0.2, type: 'spring', stiffness: 200 }}
-                    whileHover={{ rotate: 360, scale: 1.15 }}
-                    className={`inline-flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-br ${value.color} mb-4 transition-transform duration-300`}
+                    whileHover={{ 
+                      rotate: 360, 
+                      scale: 1.2,
+                      transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] }
+                    }}
+                    className={`inline-flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-br ${value.color} mb-4 transition-transform duration-300 cursor-default`}
                   >
                     <div className="text-white">
                       {value.icon}
                     </div>
                   </motion.div>
-                  <h3 className="text-xl font-bold mb-3 group-hover:text-[#FFDD00] transition-colors">
+                  <motion.h3 
+                    className="text-xl font-bold mb-3 transition-colors duration-300"
+                    whileHover={{ color: '#FFDD00' }}
+                  >
                     {value.title}
-                  </h3>
-                  <p className="text-white/70 leading-relaxed text-sm">
+                  </motion.h3>
+                  <p className="text-white/85 leading-relaxed text-sm">
                     {value.description}
                   </p>
                 </div>
@@ -677,8 +719,8 @@ export default function AboutUs() {
       </section>
 
       {/* Reviews & Testimonials Section */}
-      <section className="py-12 sm:py-16 md:py-20 lg:py-28 px-4 sm:px-6 md:px-10 bg-gradient-to-b from-black to-gray-900 text-white relative overflow-hidden">
-        <div className="max-w-[1400px] mx-auto">
+      <section className="py-10 sm:py-12 md:py-16 lg:py-20 xl:py-28 px-4 sm:px-6 md:px-8 lg:px-10 bg-gradient-to-b from-black to-gray-900 text-white relative overflow-hidden safe-area-left safe-area-right">
+        <div className="max-w-[min(1400px,95vw)] mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -688,13 +730,13 @@ export default function AboutUs() {
           >
             <div className="inline-flex items-center gap-2 mb-4">
               <div className="w-8 h-px bg-[#FFDD00]" />
-              <span className="text-sm uppercase tracking-wider text-white/70">{t('aboutUs.reviews.subtitle')}</span>
+              <span className="text-sm uppercase tracking-wider text-white/85">{t('aboutUs.reviews.subtitle')}</span>
               <div className="w-8 h-px bg-[#FFDD00]" />
             </div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-[#FFDD00]">
               {t('aboutUs.reviews.title')}
             </h2>
-            <p className="text-white/70 max-w-2xl mx-auto">
+            <p className="text-white/85 max-w-2xl mx-auto">
               {t('aboutUs.reviews.description')}
             </p>
           </motion.div>
@@ -705,7 +747,7 @@ export default function AboutUs() {
             </div>
           ) : testimonials.length === 0 ? (
             <div className="text-center py-12 mb-16">
-              <div className="text-white/60">{language === 'ar' ? 'لا توجد مراجعات متاحة حالياً' : 'No testimonials available at the moment'}</div>
+              <div className="text-white/80">{language === 'ar' ? 'لا توجد مراجعات متاحة حالياً' : 'No testimonials available at the moment'}</div>
             </div>
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-16">
@@ -715,9 +757,15 @@ export default function AboutUs() {
                   initial={{ opacity: 0, y: 30, rotateX: -15 }}
                   whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
                   viewport={{ once: true, margin: '-50px' }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  whileHover={{ y: -8, scale: 1.02, rotateY: 2 }}
-                  className="group relative bg-gradient-to-br from-gray-900 to-black rounded-2xl p-6 md:p-8 border border-gray-800 hover:border-[#FFDD00]/50 transition-all duration-300 card-lift"
+                  transition={{ duration: 0.3, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                  whileHover={{ 
+                    y: -10, 
+                    scale: 1.03, 
+                    rotateY: 2,
+                    borderColor: 'rgba(255, 221, 0, 0.5)',
+                    boxShadow: '0 20px 40px rgba(255, 221, 0, 0.15)'
+                  }}
+                  className="group relative bg-gradient-to-br from-gray-900 to-black rounded-2xl p-6 md:p-8 border border-gray-800 transition-all duration-300 cursor-default"
                 >
                   <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#FFDD00]/10 to-transparent rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   
@@ -732,9 +780,9 @@ export default function AboutUs() {
                     
                     <div className="border-t border-gray-800 pt-4">
                       <p className="font-semibold text-[#FFDD00] mb-1">{testimonial.name}</p>
-                      <p className="text-sm text-white/60">{testimonial.company}</p>
+                      <p className="text-sm text-white/85">{testimonial.company}</p>
                       {testimonial.location && (
-                        <p className="text-xs text-white/50 mt-1">{testimonial.location}</p>
+                        <p className="text-xs text-white/75 mt-1">{testimonial.location}</p>
                       )}
                     </div>
                   </div>
@@ -757,7 +805,7 @@ export default function AboutUs() {
               <div className="relative z-10">
                 <div className="text-center mb-8">
                   <h3 className="text-2xl md:text-3xl font-bold mb-2 text-[#FFDD00]">{t('aboutUs.reviews.form.title')}</h3>
-                  <p className="text-white/70">{t('aboutUs.reviews.form.subtitle')}</p>
+                  <p className="text-white/85">{t('aboutUs.reviews.form.subtitle')}</p>
                 </div>
 
                 <form onSubmit={handleReviewSubmit} className="space-y-6 max-w-2xl mx-auto">
@@ -778,10 +826,10 @@ export default function AboutUs() {
                           onChange={handleReviewChange}
                           onFocus={() => setFocusedField(field.name)}
                           onBlur={() => setFocusedField(null)}
-                          className={`w-full bg-gray-800/50 border rounded-xl px-4 py-3.5 text-white placeholder-white/40 focus:outline-none transition-all duration-300 ${
+                          className={`w-full bg-gray-800/50 border rounded-xl px-4 py-3.5 text-white placeholder-white/40 focus:outline-none transition-all duration-300 ease-out ${
                             focusedField === field.name
                               ? 'border-[#FFDD00] shadow-lg shadow-[#FFDD00]/20 scale-[1.02]'
-                              : 'border-gray-700 hover:border-gray-600'
+                              : 'border-gray-700 hover:border-gray-600 hover:scale-[1.01]'
                           }`}
                           placeholder={field.placeholder}
                           required
@@ -802,10 +850,10 @@ export default function AboutUs() {
                       onChange={handleReviewChange}
                       onFocus={() => setFocusedField('location')}
                       onBlur={() => setFocusedField(null)}
-                      className={`w-full bg-gray-800/50 border rounded-xl px-4 py-3.5 text-white placeholder-white/40 focus:outline-none transition-all duration-300 ${
+                      className={`w-full bg-gray-800/50 border rounded-xl px-4 py-3.5 text-white placeholder-white/40 focus:outline-none transition-all duration-300 ease-out ${
                         focusedField === 'location'
                           ? 'border-[#FFDD00] shadow-lg shadow-[#FFDD00]/20 scale-[1.02]'
-                          : 'border-gray-700 hover:border-gray-600'
+                          : 'border-gray-700 hover:border-gray-600 hover:scale-[1.01]'
                       }`}
                       placeholder={language === 'ar' ? 'مثال: جدة' : 'e.g., Jeddah'}
                     />
@@ -822,10 +870,10 @@ export default function AboutUs() {
                       onChange={handleReviewChange}
                       onFocus={() => setFocusedField('rating')}
                       onBlur={() => setFocusedField(null)}
-                      className={`w-full bg-gray-800/50 border rounded-xl px-4 py-3.5 text-white focus:outline-none transition-all duration-300 ${
+                      className={`w-full bg-gray-800/50 border rounded-xl px-4 py-3.5 text-white focus:outline-none transition-all duration-300 ease-out ${
                         focusedField === 'rating'
                           ? 'border-[#FFDD00] shadow-lg shadow-[#FFDD00]/20 scale-[1.02]'
-                          : 'border-gray-700 hover:border-gray-600'
+                          : 'border-gray-700 hover:border-gray-600 hover:scale-[1.01]'
                       }`}
                       required
                     >
@@ -850,10 +898,10 @@ export default function AboutUs() {
                       onFocus={() => setFocusedField('message')}
                       onBlur={() => setFocusedField(null)}
                       rows={5}
-                      className={`w-full bg-gray-800/50 border rounded-xl px-4 py-3.5 text-white placeholder-white/40 focus:outline-none transition-all duration-300 resize-none ${
+                      className={`w-full bg-gray-800/50 border rounded-xl px-4 py-3.5 text-white placeholder-white/40 focus:outline-none transition-all duration-300 resize-none ease-out ${
                         focusedField === 'message'
                           ? 'border-[#FFDD00] shadow-lg shadow-[#FFDD00]/20 scale-[1.01]'
-                          : 'border-gray-700 hover:border-gray-600'
+                          : 'border-gray-700 hover:border-gray-600 hover:scale-[1.005]'
                       }`}
                       placeholder={t('aboutUs.reviews.form.messagePlaceholder')}
                       required
@@ -893,8 +941,8 @@ export default function AboutUs() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-12 sm:py-16 md:py-20 lg:py-28 px-4 sm:px-6 md:px-10 bg-black text-white">
-        <div className="max-w-[1400px] mx-auto">
+      <section className="py-10 sm:py-12 md:py-16 lg:py-20 xl:py-28 px-4 sm:px-6 md:px-8 lg:px-10 bg-black text-white safe-area-left safe-area-right">
+        <div className="max-w-[min(1400px,95vw)] mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -911,7 +959,7 @@ export default function AboutUs() {
                 </AnimatedText>
               </h2>
               <AnimatedText type="fade" delay={0.3}>
-                <p className="text-lg md:text-xl text-white/70 mb-8 max-w-2xl mx-auto">
+                <p className="text-lg md:text-xl text-white/85 mb-8 max-w-2xl mx-auto">
                   {t('aboutUs.cta.description')}
                 </p>
               </AnimatedText>

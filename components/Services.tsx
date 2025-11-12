@@ -87,8 +87,8 @@ export default function Services() {
   ];
 
   return (
-    <section id="services" className="py-16 md:py-24 px-4 sm:px-6 md:px-10 bg-black text-white">
-      <div className="max-w-[1400px] mx-auto">
+    <section id="services" className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-8 lg:px-10 bg-black text-white safe-area-left safe-area-right">
+      <div className="max-w-[min(1400px,95vw)] mx-auto">
         {/* Header Section */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -112,13 +112,13 @@ export default function Services() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-12 md:mb-16 text-center"
+          className="text-[clamp(1.875rem,6vw,4.375rem)] font-bold mb-8 sm:mb-10 md:mb-12 lg:mb-16 text-center text-overflow-safe"
         >
           {t('services.heading')}
         </motion.h2>
 
         {/* Service Cards */}
-        <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mb-8 md:mb-12">
+        <div className="flex flex-wrap justify-center gap-3 sm:gap-4 md:gap-6 mb-6 sm:mb-8 md:mb-10 lg:mb-12">
           {services.map((service, index) => {
             const isActive = selectedIndex === index;
             const isHovered = hoveredIndex === index;
@@ -134,16 +134,16 @@ export default function Services() {
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
                 onClick={() => setSelectedIndex(index)}
-                className="flex flex-col items-center cursor-pointer"
+                className="flex flex-col items-center cursor-pointer touch-manipulation"
                 style={{
-                  padding: 'clamp(20px, 4vw, 32px)',
-                  borderRadius: isActive ? '50%' : '45px',
+                  padding: 'clamp(1rem, 4vw, 2rem)',
+                  borderRadius: isActive ? '50%' : 'clamp(28px, 6vw, 45px)',
                   border: isActive || isHovered 
                     ? '2px solid #3b82f6' 
-                    : '1px solid rgba(255, 255, 255, 0.3)',
-                  width: isActive ? 'clamp(200px, 25vw, 300px)' : 'clamp(180px, 23vw, 280px)',
-                  height: isActive ? 'clamp(200px, 25vw, 300px)' : 'auto',
-                  minHeight: isActive ? 'clamp(200px, 25vw, 300px)' : 'clamp(180px, 23vw, 280px)',
+                    : '1px solid rgba(255, 255, 255, 0.4)',
+                  width: isActive ? 'clamp(160px, min(25vw, 300px), 300px)' : 'clamp(140px, min(23vw, 280px), 280px)',
+                  height: isActive ? 'clamp(160px, min(25vw, 300px), 300px)' : 'auto',
+                  minHeight: isActive ? 'clamp(160px, min(25vw, 300px), 300px)' : 'clamp(140px, min(23vw, 280px), 280px)',
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
@@ -151,6 +151,7 @@ export default function Services() {
                   position: 'relative',
                   flexShrink: 0,
                   backgroundColor: '#111114',
+                  maxWidth: '100%',
                 }}
               >
                 {/* Iridescent glow effect for active card */}
@@ -203,20 +204,21 @@ export default function Services() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="flex justify-center mb-8"
+          className="flex justify-center mb-6 sm:mb-8"
         >
           <motion.p
             key={selectedIndex}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
-            className="text-base sm:text-lg text-white text-center"
+            className="text-sm sm:text-base md:text-lg text-white text-center text-overflow-safe"
             style={{ 
-              maxWidth: '100%',
-              padding: 'clamp(12px, 3vw, 24px)',
-              borderRadius: '16px',
-              border: '1px solid rgba(255, 255, 255, 0.3)',
-              backgroundColor: 'rgba(0, 0, 0, 0.5)',
+              maxWidth: 'min(100%, 90vw)',
+              padding: 'clamp(0.75rem, 3vw, 1.5rem)',
+              borderRadius: 'clamp(12px, 2vw, 16px)',
+              border: '1px solid rgba(255, 255, 255, 0.4)',
+              backgroundColor: 'rgba(0, 0, 0, 0.6)',
+              fontSize: 'clamp(0.875rem, 2.5vw, 1.125rem)',
             }}
           >
             {services[selectedIndex].description}

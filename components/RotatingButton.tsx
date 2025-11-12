@@ -50,10 +50,12 @@ export default function RotatingButton({
     : "#ffffff"; // White for inactive or non-gallery buttons
 
   return (
-    <div 
-      className={`inline-block cursor-pointer uppercase ${className}`}
+    <button
+      type="button"
+      className={`inline-block cursor-pointer uppercase focus-visible:outline-2 focus-visible:outline-[#FFDD00] focus-visible:outline-offset-2 rounded-full ${className}`}
       onClick={onClick}
       style={containerStyle}
+      aria-label={text}
     >
       <RotatingBorder
         width={isAutoWidth ? '100%' : width}
@@ -72,7 +74,7 @@ export default function RotatingButton({
         fontFamily="Inter"
         letterSpacing={letterSpacing}
       />
-    </div>
+    </button>
   );
 }
 

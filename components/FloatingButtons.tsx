@@ -13,7 +13,7 @@ export default function FloatingButtons() {
         transition={{ delay: 0.5 }}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        className="w-14 h-14 rounded-full bg-blue-600 hover:bg-blue-700 flex items-center justify-center shadow-lg shadow-blue-600/50 transition-all duration-300"
+        className="w-14 h-14 rounded-full bg-blue-600 hover:bg-blue-700 flex items-center justify-center shadow-lg shadow-blue-600/50 transition-all duration-300 focus-visible:outline-2 focus-visible:outline-[#FFDD00] focus-visible:outline-offset-2"
         aria-label="Call us"
       >
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -31,7 +31,7 @@ export default function FloatingButtons() {
         transition={{ delay: 0.7 }}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        className="w-14 h-14 rounded-full bg-green-500 hover:bg-green-600 flex items-center justify-center shadow-lg shadow-green-500/50 transition-all duration-300"
+        className="w-14 h-14 rounded-full bg-green-500 hover:bg-green-600 flex items-center justify-center shadow-lg shadow-green-500/50 transition-all duration-300 focus-visible:outline-2 focus-visible:outline-[#FFDD00] focus-visible:outline-offset-2"
         aria-label="Contact us on WhatsApp"
       >
         <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
@@ -41,4 +41,5 @@ export default function FloatingButtons() {
     </div>
   );
 }
+
 

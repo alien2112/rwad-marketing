@@ -51,7 +51,7 @@ export default function Team() {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <h4 className="text-sm md:text-base font-semibold text-white/60 uppercase tracking-wider mb-4">
+          <h4 className="text-sm md:text-base font-semibold text-white/85 uppercase tracking-wider mb-4">
             TEAM
           </h4>
           <h2 className="text-4xl md:text-6xl font-bold">
@@ -106,7 +106,7 @@ export default function Team() {
                       </div>
                     </div>
                     <h4 className="text-xl font-semibold mb-2">{member.name}</h4>
-                    <p className="text-white/60">{member.role}</p>
+                    <p className="text-white/85">{member.role}</p>
                   </motion.div>
                 </div>
               ))}

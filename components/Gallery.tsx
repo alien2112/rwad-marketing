@@ -1,10 +1,17 @@
 'use client';
 
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import RotatingButton from './RotatingButton';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { Monoton } from 'next/font/google';
+
+const monoton = Monoton({
+  weight: '400',
+  subsets: ['latin'],
+  display: 'swap',
+});
 
 const galleryImages = [
   { src: '/IMG-20251111-WA0028.webp', alt: 'Diamond saw cutting reinforced wall' },
@@ -18,6 +25,14 @@ const galleryImages = [
 export default function Gallery() {
   const { t } = useLanguage();
   const [activeFilter, setActiveFilter] = useState('all');
+  const [windowWidth, setWindowWidth] = useState(0);
+
+  useEffect(() => {
+    setWindowWidth(window.innerWidth);
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const filters = [
     { key: 'all', label: t('gallery.filters.all') },
@@ -27,22 +42,22 @@ export default function Gallery() {
   ];
 
   return (
-    <section id="project" className="py-16 md:py-24 px-4 sm:px-6 md:px-10 bg-black text-white">
-      <div className="max-w-[1400px] mx-auto">
+    <section id="project" className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-8 lg:px-10 bg-black text-white safe-area-left safe-area-right">
+      <div className="max-w-[min(1400px,95vw)] mx-auto">
         {/* Title */}
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-8 md:mb-12"
+          className={`text-[clamp(1.875rem,6vw,4.375rem)] mb-6 sm:mb-8 md:mb-10 lg:mb-12 ${monoton.className} text-overflow-safe`}
           style={{ textAlign: 'left' }}
         >
           {t('gallery.heading')}
         </motion.h2>
 
         {/* Image Gallery - Responsive masonry layout */}
-        <div className="mb-12 grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
+        <div className="mb-8 sm:mb-10 md:mb-12 grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 md:gap-5 lg:gap-6">
           {/* Image 1 */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -153,21 +168,24 @@ export default function Gallery() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="flex flex-wrap justify-center gap-2 md:gap-3"
+          className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4"
+          role="group"
+          aria-label="Gallery filters"
         >
           {filters.map((filter) => (
             <RotatingButton
               key={filter.key}
               text={filter.label}
-              width="auto"
+              width={windowWidth > 0 ? Math.min(240, windowWidth * 0.8) : 240}
               height={48}
               borderRadius={24}
               fontSize={16}
               fontWeight={600}
               letterSpacing={0}
               isActive={activeFilter === filter.key}
-              onClick={() => setActiveFilter(filter.key)}
               useGradient={true}
+              onClick={() => setActiveFilter(filter.key)}
+              className={activeFilter === filter.key ? 'pointer-events-auto' : 'pointer-events-auto'}
             />
           ))}
         </motion.div>

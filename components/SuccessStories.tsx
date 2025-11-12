@@ -18,8 +18,8 @@ export default function SuccessStories() {
   const isRTL = language === 'ar';
   
   return (
-    <section className="py-16 md:py-24 px-4 sm:px-6 md:px-10 bg-black text-white relative overflow-hidden">
-      <div className="max-w-[1600px] mx-auto relative">
+    <section className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-8 lg:px-10 bg-black text-white relative overflow-hidden safe-area-left safe-area-right">
+      <div className="max-w-[min(1600px,95vw)] mx-auto relative">
         {/* HOME Button - Top Right */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -42,15 +42,15 @@ export default function SuccessStories() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-8 md:mb-12 lg:mb-16"
-          style={{ maxWidth: '700px' }}
+          className="text-[clamp(1.875rem,6vw,4.375rem)] font-bold text-white mb-6 sm:mb-8 md:mb-10 lg:mb-12 xl:mb-16 text-overflow-safe"
+          style={{ maxWidth: 'min(700px, 90vw)' }}
         >
           {t('successStories.heading')}
         </motion.h2>
 
         {/* Success Stories Cards - Right side, stacked vertically */}
         <div className="flex flex-col items-end">
-          <div className="w-full max-w-4xl space-y-4 sm:space-y-6 md:space-y-8">
+          <div className="w-full max-w-[min(1000px,95vw)] space-y-4 sm:space-y-5 md:space-y-6 lg:space-y-8">
             {stories.map((story, index) => (
               <motion.div
                 key={index}
@@ -71,7 +71,7 @@ export default function SuccessStories() {
                       </h3>
                       
                       {/* Subtitle */}
-                      <p className="text-sm md:text-base text-white/70 mb-6">
+                      <p className="text-sm md:text-base text-white/85 mb-6">
                         {story.subtitle}
                       </p>
                       
@@ -92,7 +92,7 @@ export default function SuccessStories() {
                   
                   {/* Right side - Yellow background */}
                   <div 
-                    className="relative p-4 sm:p-6 md:p-8 flex items-center justify-center min-w-full sm:min-w-[200px] md:min-w-[240px]"
+                    className="relative p-4 sm:p-5 md:p-6 lg:p-8 flex items-center justify-center min-w-full sm:min-w-[clamp(180px,25vw,240px)]"
                     style={{
                       backgroundColor: '#FFDD00'
                     }}

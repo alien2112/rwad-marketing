@@ -352,13 +352,28 @@
       "titleHighlight": "One Cut at a Time",
       "description": "For over a decade, Almohtaref has been the trusted partner for precision concrete cutting, demolition, and specialized construction services across Mecca, Jeddah, and Taif."
     },
+    "statistics": {
+      "subtitle": "Achievements",
+      "title": "Our Impact in Numbers",
+      "stats": {
+        "projectsCompleted": "Projects Completed",
+        "yearsExperience": "Years Experience",
+        "hourService": "Hour Service",
+        "clientSatisfaction": "Client Satisfaction"
+      }
+    },
     "whoWeAre": {
       "subtitle": "Who We Are",
       "title": "Specialized Service for Opening Doors and Windows",
       "paragraph1": "Almohtaref is a leading provider of specialized construction services, specializing in precision concrete cutting, door and window openings, plumbing and electrical installations, and controlled demolition.",
       "paragraph2": "Our team of experienced professionals combines cutting-edge technology with traditional craftsmanship to deliver exceptional results that exceed our clients' expectations.",
       "paragraph3": "We understand that every project is unique, which is why we approach each job with careful planning, attention to detail, and a commitment to excellence.",
-      "projectsCompleted": "Projects Completed"
+      "projectsCompleted": "Projects Completed",
+      "images": {
+        "doorWindowOpening": "Specialized door and window opening service",
+        "plumbingElectrical": "Precise plumbing and electrical installation work",
+        "concreteCutting": "Professional concrete cutting and demolition service"
+      }
     },
     "timeline": {
       "subtitle": "Our Journey",

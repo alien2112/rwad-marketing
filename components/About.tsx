@@ -4,6 +4,13 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import PromotionalBanner from './PromotionalBanner';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { Sixtyfour } from 'next/font/google';
+
+const sixtyfour = Sixtyfour({
+  weight: '400',
+  subsets: ['latin'],
+  display: 'swap',
+});
 
 const aboutImages = [
   {
@@ -23,8 +30,8 @@ const aboutImages = [
 export default function About() {
   const { t } = useLanguage();
   return (
-    <section id="about" className="py-16 md:py-24 px-4 sm:px-6 md:px-10 bg-black text-white">
-      <div className="max-w-[1400px] mx-auto">
+    <section id="about" className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-8 lg:px-10 bg-black text-white safe-area-left safe-area-right">
+      <div className="max-w-[min(1400px,95vw)] mx-auto">
         {/* Header Section - Top Left */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -35,15 +42,15 @@ export default function About() {
           style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}
         >
           {/* Horizontal line above */}
-          <div style={{ width: '40px', height: '1px', backgroundColor: 'white', marginBottom: '12px' }} />
+          <div style={{ width: 'clamp(30px, 5vw, 40px)', height: '1px', backgroundColor: 'white', marginBottom: 'clamp(0.5rem, 1.5vw, 0.75rem)' }} />
           {/* ABOUT text */}
-          <h4 className="text-sm md:text-base font-semibold text-white uppercase tracking-wider mb-2">
+          <h4 className="text-xs sm:text-sm md:text-base font-semibold text-white uppercase tracking-wider mb-2">
             {t('about.title')}
           </h4>
           {/* ALMOHTAREF text */}
           <h3 
-            className="text-xl md:text-2xl font-bold text-white uppercase tracking-wide"
-            style={{ fontFamily: '"ARK-ES", sans-serif' }}
+            className={`text-lg sm:text-xl md:text-2xl font-bold text-white uppercase tracking-wide ${sixtyfour.className}`}
+            style={{ fontFamily: '"Sixtyfour", system-ui, -apple-system, sans-serif', fontSize: 'clamp(1.125rem, 3vw, 1.5rem)' }}
           >
             ALMOHTAREF
           </h3>
@@ -55,13 +62,13 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-8 md:mb-12 leading-tight"
+          className="text-[clamp(1.875rem,6vw,4.375rem)] font-bold mb-6 sm:mb-8 md:mb-10 lg:mb-12 leading-tight text-overflow-safe"
         >
           {t('about.heading')}
         </motion.h2>
 
         {/* Images and Description Section */}
-        <div className="grid md:grid-cols-[1fr_1fr] gap-6 md:gap-8 lg:gap-12 items-start mb-12 md:mb-16">
+        <div className="grid md:grid-cols-[1fr_1fr] gap-4 sm:gap-6 md:gap-8 lg:gap-12 items-start mb-8 sm:mb-12 md:mb-16">
           {/* Three Images */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -90,8 +97,8 @@ export default function About() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-base sm:text-lg md:text-xl text-white leading-relaxed"
-            style={{ alignSelf: 'center' }}
+            className="text-sm sm:text-base md:text-lg lg:text-xl text-white leading-relaxed text-overflow-safe"
+            style={{ alignSelf: 'center', fontSize: 'clamp(0.875rem, 2.5vw, 1.25rem)' }}
           >
             {t('about.description')}
           </motion.p>

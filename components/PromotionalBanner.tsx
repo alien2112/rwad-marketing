@@ -12,18 +12,18 @@ export default function PromotionalBanner() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
-      className="rounded-3xl p-8 md:p-12 text-left"
+      className="rounded-[clamp(20px,4vw,48px)] p-6 sm:p-8 md:p-10 lg:p-12 text-left"
       style={{
         background: 'linear-gradient(to right, #505050, #6b5a00, #8b7500, #b89a00, #d4b800, #FFDD00)',
       }}
     >
       {/* Main Heading */}
-      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">
+      <h2 className="text-[clamp(1.5rem,5vw,3rem)] font-bold mb-3 sm:mb-4 text-white text-overflow-safe">
         {t('promotional.heading')}
       </h2>
       
       {/* Body Text */}
-      <p className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed">
+      <p className="text-base sm:text-lg md:text-xl text-white/90 mb-6 sm:mb-8 leading-relaxed text-overflow-safe" style={{ fontSize: 'clamp(1rem, 2.5vw, 1.25rem)' }}>
         {t('promotional.description')}
       </p>
 

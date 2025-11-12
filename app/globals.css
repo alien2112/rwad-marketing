@@ -18,10 +18,23 @@
 /* Google Font for dotted headline */
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Dots&display=swap');
 
+/* Monoton font */
+@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+
+/* Sixtyfour font */
+@import url('https://fonts.googleapis.com/css2?family=Sixtyfour&display=swap');
+
 /* Utility for dotted font */
 .font-dotted {
   font-family: "Rubik Dots", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
     Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+}
+
+/* Utility for Monoton font */
+.font-sixty-four {
+  font-family: "Monoton", system-ui, -apple-system, sans-serif !important;
+  font-weight: 400 !important;
+  font-style: normal;
 }
 
 /* Combined Arkes + Dotted font utility */
@@ -31,9 +44,8 @@
   font-weight: 400;
 }
 
-/* Gradient for hero logo text with ARK-ES font */
+/* Gradient for hero logo text */
 .hero-logo-text {
-  font-family: 'ARK-ES', 'Arkes', 'ARK ES', sans-serif !important;
   background-image: linear-gradient(90deg, #0a0a0a 0%, #1a1a1a 8%, #2a2a2a 18%, #3a3a2f 28%, #4a4a35 38%, #5a5a3f 48%, #7a7a50 58%, #9a9a60 68%, #c0c070 78%, #e0dd00 88%, #ffdd00 100%);
   -webkit-background-clip: text;
   background-clip: text;
@@ -41,10 +53,29 @@
   color: transparent;
 }
 
+/* Ensure Sixtyfour font applies to hero banner */
+.hero-almohtaref-banner,
+section span.hero-almohtaref-banner,
+section .hero-almohtaref-banner,
+section span[class*="Sixtyfour"],
+span[data-font="sixtyfour"],
+[class*="Sixtyfour"] {
+  font-family: var(--font-sixtyfour, "Sixtyfour"), "Sixtyfour Variable", system-ui, -apple-system, sans-serif !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 html,
@@ -56,6 +87,81 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
+  width: 100%;
+  position: relative;
+}
+
+  /* Prevent horizontal scroll */
+body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Ensure all containers respect viewport */
+* {
+  max-width: 100%;
+}
+
+img, video, iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Prevent overflow in all sections */
+section {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Responsive container utilities */
+.container-responsive {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(1rem, 4vw, 2.5rem);
+  padding-right: clamp(1rem, 4vw, 2.5rem);
+}
+
+@media (min-width: 320px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 480px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1280px) {
+  html {
+    font-size: 17px;
+  }
+}
+
+@media (min-width: 1440px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1920px) {
+  html {
+    font-size: 20px;
+  }
 }
 
 body {
@@ -90,6 +196,15 @@ a {
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
       scroll-behavior: auto !important;
+    }
+  }
+
+  /* Optimize animations for mobile */
+  @media (max-width: 768px) {
+    /* Reduce animation complexity on mobile for better performance */
+    [class*="animate-"],
+    [class*="motion"] {
+      will-change: transform, opacity;
     }
   }
 
@@ -344,6 +459,318 @@ a {
     );
     background-size: 1000px 100%;
     animation: skeleton-shimmer 2s infinite;
+  }
+
+  /* Smooth hover scale effect */
+  .hover-scale {
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .hover-scale:hover {
+    transform: scale(1.02);
+  }
+
+  /* Smooth hover lift effect */
+  .hover-lift {
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(255, 221, 0, 0.15);
+  }
+
+  /* Icon hover rotation */
+  .icon-hover-rotate {
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .icon-hover-rotate:hover {
+    transform: rotate(5deg) scale(1.1);
+  }
+
+  /* Text link hover underline */
+  .link-hover-underline {
+    position: relative;
+    transition: color 0.3s ease;
+  }
+
+  .link-hover-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #FFDD00;
+    transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .link-hover-underline:hover {
+    color: #FFDD00;
+  }
+
+  .link-hover-underline:hover::after {
+    width: 100%;
+  }
+
+  /* Button press effect */
+  .button-press:active {
+    transform: scale(0.98);
+  }
+
+  /* Smooth border color transition */
+  .border-smooth {
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .border-smooth:hover {
+    border-color: rgba(255, 221, 0, 0.5);
+    box-shadow: 0 0 20px rgba(255, 221, 0, 0.1);
+  }
+
+  /* Consistent easing function */
+  .ease-smooth {
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* Responsive typography */
+  .text-responsive {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+  }
+
+  .heading-responsive {
+    font-size: clamp(1.5rem, 5vw, 3rem);
+  }
+
+  .heading-large-responsive {
+    font-size: clamp(2rem, 8vw, 5rem);
+  }
+
+  /* Responsive spacing */
+  .spacing-responsive {
+    padding: clamp(1rem, 4vw, 3rem);
+  }
+
+  .gap-responsive {
+    gap: clamp(1rem, 3vw, 2rem);
+  }
+
+  /* Responsive images */
+  .img-responsive {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  /* Touch-friendly targets */
+  @media (hover: none) and (pointer: coarse) {
+    button,
+    a,
+    input,
+    select,
+    textarea {
+      min-height: 44px;
+      min-width: 44px;
+    }
+
+    /* Improve touch interactions */
+    button:active,
+    a:active {
+      transform: scale(0.98);
+      transition: transform 0.1s ease;
+    }
+
+    /* Disable hover effects on touch devices */
+    .hover-scale:hover,
+    .hover-lift:hover {
+      transform: none;
+    }
+  }
+
+  /* Touch manipulation optimization */
+  .touch-manipulation {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Accessibility: Focus styles for keyboard navigation */
+  *:focus-visible {
+    outline: 2px solid #FFDD00;
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* Skip link styles - hidden by default, visible on focus */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  .sr-only:focus {
+    position: fixed;
+    width: auto;
+    height: auto;
+    padding: 0.5rem 1rem;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    background-color: #FFDD00;
+    color: #000;
+    z-index: 9999;
+    top: 1rem;
+    left: 1rem;
+    border-radius: 0.25rem;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Focus styles for interactive elements */
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    outline: 2px solid #FFDD00;
+    outline-offset: 2px;
+  }
+
+  /* Ensure sufficient color contrast for text */
+  /* WCAG 2.1 AA requires 4.5:1 for normal text, 3:1 for large text */
+  /* 
+   * Contrast improvements applied:
+   * - Text opacity increased from white/40-70 to white/75-90 for better readability
+   * - Border opacity increased from white/10-30 to white/20-50 for better visibility
+   * - Form placeholders improved from white/40 to white/60
+   * - Background opacity adjusted for better text contrast
+   * - All interactive elements maintain clear focus states with #FFDD00
+   */
+  
+  /* Improve focus visibility for low contrast elements */
+  button:focus-visible,
+  a:focus-visible {
+    outline-width: 3px;
+    outline-style: solid;
+    outline-color: #FFDD00;
+  }
+
+  /* Remove default focus outline for mouse users, keep for keyboard */
+  *:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  /* Ensure images have proper alt text styling (decorative images should be hidden from screen readers) */
+  img[alt=""],
+  img:not([alt]) {
+    /* Visual indicator for missing alt text - remove in production if not needed */
+  }
+
+  /* Improve color contrast for better readability */
+  /* Ensure text meets WCAG 2.1 AA standards (4.5:1 for normal text, 3:1 for large text) */
+  /* Most existing colors already meet this, but we add explicit contrast improvements */
+  
+  /* Ensure links are distinguishable */
+  a:not([class*="text-"]) {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+  }
+
+  a:hover:not([class*="text-"]) {
+    text-decoration-thickness: 2px;
+  }
+
+  /* Improve form field contrast */
+  input::placeholder,
+  textarea::placeholder {
+    opacity: 0.6;
+  }
+
+  /* Ensure disabled states are clearly visible */
+  button:disabled,
+  input:disabled,
+  textarea:disabled,
+  select:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  /* Improve scrolling on mobile */
+  @media (max-width: 768px) {
+    html {
+      -webkit-overflow-scrolling: touch;
+    }
+
+    body {
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+
+  /* Prevent text overflow */
+  .text-overflow-safe {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+  }
+
+  /* Responsive grid */
+  .grid-responsive {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    gap: clamp(1rem, 3vw, 2rem);
+  }
+
+  /* Responsive flex */
+  .flex-responsive {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(0.5rem, 2vw, 1.5rem);
+  }
+
+  /* Safe area insets for mobile */
+  @supports (padding: max(0px)) {
+    .safe-area-top {
+      padding-top: max(1rem, env(safe-area-inset-top));
+    }
+
+    .safe-area-bottom {
+      padding-bottom: max(1rem, env(safe-area-inset-bottom));
+    }
+
+    .safe-area-left {
+      padding-left: max(1rem, env(safe-area-inset-left));
+    }
+
+    .safe-area-right {
+      padding-right: max(1rem, env(safe-area-inset-right));
+    }
+  }
+
+  /* Landscape orientation adjustments */
+  @media (orientation: landscape) and (max-height: 500px) {
+    .landscape-compact {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+  }
+
+  /* Ultra-wide screen support */
+  @media (min-width: 1920px) {
+    .ultra-wide-container {
+      max-width: 1800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
 }
 

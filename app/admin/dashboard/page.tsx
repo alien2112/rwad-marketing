@@ -137,6 +137,7 @@ export default function AdminDashboard() {
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState<any>({});
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
   const [toasts, setToasts] = useState<Toast[]>([]);
 
   const showToast = useCallback((message: string, type: 'success' | 'error' | 'info' = 'info') => {
@@ -156,6 +157,20 @@ export default function AdminDashboard() {
     }
     fetchAllData();
   }, [router]);
+
+  useEffect(() => {
+    const checkDesktop = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+      // On desktop, always show sidebar
+      if (window.innerWidth >= 1024) {
+        setIsSidebarOpen(true);
+      }
+    };
+    
+    checkDesktop();
+    window.addEventListener('resize', checkDesktop);
+    return () => window.removeEventListener('resize', checkDesktop);
+  }, []);
 
   const adminHeaders = {
     'X-Admin-Request': 'true',
@@ -379,10 +394,10 @@ export default function AdminDashboard() {
       <motion.aside
         initial={false}
         animate={{
-          x: isSidebarOpen ? 0 : '-100%',
+          x: isDesktop || isSidebarOpen ? 0 : '-100%',
         }}
         transition={{ duration: 0.3, ease: 'easeInOut' }}
-        className={`fixed left-0 top-0 h-full w-64 bg-[#111114] border-r border-white/10 p-6 z-50 lg:translate-x-0 shadow-2xl`}
+        className={`fixed left-0 top-0 h-full w-64 bg-[#111114] border-r border-white/10 p-6 z-50 shadow-2xl`}
       >
         <motion.div
           initial={{ opacity: 0, x: -20 }}
@@ -444,7 +459,7 @@ export default function AdminDashboard() {
 
       {/* Sidebar Overlay */}
       <AnimatePresence>
-        {isSidebarOpen && (
+        {isSidebarOpen && !isDesktop && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

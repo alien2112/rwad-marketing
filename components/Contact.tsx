@@ -55,17 +55,17 @@ export default function Contact() {
   return (
     <div className="min-h-screen bg-black text-white pt-20">
       {/* Hero Section */}
-      <section className="relative py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-10 overflow-hidden">
+      <section className="relative py-8 sm:py-12 md:py-16 lg:py-20 px-4 sm:px-6 md:px-8 lg:px-10 overflow-hidden safe-area-left safe-area-right">
         <div className="absolute inset-0 bg-gradient-to-b from-black via-black/95 to-black" />
-        <div className="relative z-10 max-w-[1400px] mx-auto">
+        <div className="relative z-10 max-w-[min(1400px,95vw)] mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="mb-6"
           >
-            <div className="w-12 h-px bg-white/60 mb-4" />
-            <h4 className="text-sm md:text-base font-semibold text-white/60 uppercase tracking-wider mb-8">
+            <div className="w-12 h-px bg-white/80 mb-4" />
+            <h4 className="text-sm md:text-base font-semibold text-white/85 uppercase tracking-wider mb-8">
               {t('contact.getInTouch')}
             </h4>
           </motion.div>
@@ -74,7 +74,7 @@ export default function Contact() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-6"
+            className="text-[clamp(1.875rem,6vw,4.375rem)] font-bold mb-4 sm:mb-5 md:mb-6 text-overflow-safe"
           >
             {t('contact.heading')}
           </motion.h1>
@@ -83,7 +83,8 @@ export default function Contact() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-lg text-white/70 max-w-3xl"
+            className="text-base sm:text-lg text-white/85 max-w-[min(48rem,90vw)] text-overflow-safe"
+            style={{ fontSize: 'clamp(1rem, 2.5vw, 1.125rem)' }}
           >
             {t('contact.description')}
           </motion.p>
@@ -91,9 +92,9 @@ export default function Contact() {
       </section>
 
       {/* Contact Form and Info Section */}
-      <section className="py-12 md:py-16 px-4 sm:px-6 md:px-10 bg-black">
-        <div className="max-w-[1400px] mx-auto">
-          <div className="grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-16">
+      <section className="py-8 sm:py-12 md:py-16 lg:py-20 px-4 sm:px-6 md:px-8 lg:px-10 bg-black safe-area-left safe-area-right">
+        <div className="max-w-[min(1400px,95vw)] mx-auto">
+          <div className="grid md:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-16">
             {/* Contact Form */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -105,7 +106,7 @@ export default function Contact() {
                 <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-[#FFDD00]">
                   {t('contact.sendMessage')}
                 </h2>
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-6" noValidate>
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium mb-2 text-white/90">
                       {t('contact.form.name')}
@@ -118,10 +119,10 @@ export default function Contact() {
                       onChange={handleChange}
                       onFocus={() => setFocusedField('name')}
                       onBlur={() => setFocusedField(null)}
-                      className={`w-full bg-gray-800/50 border rounded-xl px-4 py-3.5 text-white placeholder-white/40 focus:outline-none transition-all duration-300 ${
+                      className={`w-full bg-gray-800/60 border rounded-xl px-4 py-3.5 text-white placeholder-white/60 focus:outline-none transition-all duration-300 ${
                         focusedField === 'name'
                           ? 'border-[#FFDD00] shadow-lg shadow-[#FFDD00]/20'
-                          : 'border-gray-700 hover:border-gray-600'
+                          : 'border-gray-600 hover:border-gray-500'
                       }`}
                       placeholder={t('contact.form.namePlaceholder')}
                       required
@@ -183,10 +184,10 @@ export default function Contact() {
                       onChange={handleChange}
                       onFocus={() => setFocusedField('service')}
                       onBlur={() => setFocusedField(null)}
-                      className={`w-full bg-gray-800/50 border rounded-xl px-4 py-3.5 text-white focus:outline-none transition-all duration-300 ${
+                      className={`w-full bg-gray-800/60 border rounded-xl px-4 py-3.5 text-white focus:outline-none transition-all duration-300 ${
                         focusedField === 'service'
                           ? 'border-[#FFDD00] shadow-lg shadow-[#FFDD00]/20'
-                          : 'border-gray-700 hover:border-gray-600'
+                          : 'border-gray-600 hover:border-gray-500'
                       }`}
                       required
                     >
@@ -211,10 +212,10 @@ export default function Contact() {
                       onFocus={() => setFocusedField('message')}
                       onBlur={() => setFocusedField(null)}
                       rows={5}
-                      className={`w-full bg-gray-800/50 border rounded-xl px-4 py-3.5 text-white placeholder-white/40 focus:outline-none transition-all duration-300 resize-none ${
+                      className={`w-full bg-gray-800/60 border rounded-xl px-4 py-3.5 text-white placeholder-white/60 focus:outline-none transition-all duration-300 resize-none ${
                         focusedField === 'message'
                           ? 'border-[#FFDD00] shadow-lg shadow-[#FFDD00]/20'
-                          : 'border-gray-700 hover:border-gray-600'
+                          : 'border-gray-600 hover:border-gray-500'
                       }`}
                       placeholder={t('contact.form.messagePlaceholder')}
                       required
@@ -226,7 +227,8 @@ export default function Contact() {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-[#FFDD00] to-[#FFE640] text-black font-bold py-4 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-[#FFDD00]/30 uppercase tracking-wide text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-gradient-to-r from-[#FFDD00] to-[#FFE640] text-black font-bold py-4 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-[#FFDD00]/30 uppercase tracking-wide text-sm disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-[#FFDD00] focus-visible:outline-offset-2"
+                    aria-label={isSubmitting ? t('contact.form.sending') : t('contact.form.send')}
                   >
                     {isSubmitting ? t('contact.form.sending') : t('contact.form.send')}
                   </motion.button>
@@ -246,9 +248,9 @@ export default function Contact() {
                 <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-[#FFDD00]">
                   {t('contact.contactInfo')}
                 </h2>
-                <p className="text-white/70 mb-8 leading-relaxed">
-                  {t('contact.contactInfoDescription')}
-                </p>
+                      <p className="text-white/85 mb-8 leading-relaxed">
+                        {t('contact.contactInfoDescription')}
+                      </p>
               </div>
 
               {/* Contact Cards */}
@@ -257,7 +259,8 @@ export default function Contact() {
                 <motion.a
                   href="tel:+966501234567"
                   whileHover={{ scale: 1.02 }}
-                  className="block bg-gradient-to-br from-gray-900 to-black rounded-xl p-6 border border-gray-800 hover:border-[#FFDD00]/50 transition-all duration-300"
+                  className="block bg-gradient-to-br from-gray-900 to-black rounded-xl p-6 border border-gray-700 hover:border-[#FFDD00]/60 transition-all duration-300 focus-visible:outline-2 focus-visible:outline-[#FFDD00] focus-visible:outline-offset-2"
+                  aria-label={`Call us at ${t('contact.phoneNumber')}`}
                 >
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 rounded-lg bg-[#FFDD00]/10 flex items-center justify-center flex-shrink-0">
@@ -267,8 +270,8 @@ export default function Contact() {
                     </div>
                     <div>
                       <h3 className="text-white font-semibold mb-1">{t('contact.phone')}</h3>
-                      <p className="text-white/70">{t('contact.phoneNumber')}</p>
-                      <p className="text-white/70">{t('contact.available247')}</p>
+                      <p className="text-white/85">{t('contact.phoneNumber')}</p>
+                      <p className="text-white/85">{t('contact.available247')}</p>
                     </div>
                   </div>
                 </motion.a>
@@ -279,7 +282,8 @@ export default function Contact() {
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.02 }}
-                  className="block bg-gradient-to-br from-gray-900 to-black rounded-xl p-6 border border-gray-800 hover:border-[#FFDD00]/50 transition-all duration-300"
+                  className="block bg-gradient-to-br from-gray-900 to-black rounded-xl p-6 border border-gray-700 hover:border-[#FFDD00]/60 transition-all duration-300 focus-visible:outline-2 focus-visible:outline-[#FFDD00] focus-visible:outline-offset-2"
+                  aria-label={`Contact us on WhatsApp at ${t('contact.phoneNumber')}`}
                 >
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 rounded-lg bg-[#FFDD00]/10 flex items-center justify-center flex-shrink-0">
@@ -289,8 +293,8 @@ export default function Contact() {
                     </div>
                     <div>
                       <h3 className="text-white font-semibold mb-1">{t('contact.whatsapp')}</h3>
-                      <p className="text-white/70">{t('contact.phoneNumber')}</p>
-                      <p className="text-white/70">{t('contact.quickResponse')}</p>
+                      <p className="text-white/85">{t('contact.phoneNumber')}</p>
+                      <p className="text-white/85">{t('contact.quickResponse')}</p>
                     </div>
                   </div>
                 </motion.a>
@@ -309,8 +313,8 @@ export default function Contact() {
                     </div>
                     <div>
                       <h3 className="text-white font-semibold mb-1">{t('contact.location')}</h3>
-                      <p className="text-white/70">{t('contact.locationCity')}</p>
-                      <p className="text-white/70">{t('contact.locationService')}</p>
+                      <p className="text-white/85">{t('contact.locationCity')}</p>
+                      <p className="text-white/85">{t('contact.locationService')}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -329,8 +333,8 @@ export default function Contact() {
                     </div>
                     <div>
                       <h3 className="text-white font-semibold mb-1">{t('contact.workingHours')}</h3>
-                      <p className="text-white/70">{t('contact.hours247')}</p>
-                      <p className="text-white/70">{t('contact.emergencyService')}</p>
+                      <p className="text-white/85">{t('contact.hours247')}</p>
+                      <p className="text-white/85">{t('contact.emergencyService')}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -342,6 +346,13 @@ export default function Contact() {
     </div>
   );
 }
+
+
+
+
+
+
+
 
 
 

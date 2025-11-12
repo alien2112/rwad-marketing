@@ -12,3 +12,4 @@ export function getImageUrl(image: string): string {
   return `/api/images/${image}`;
 }
 
+

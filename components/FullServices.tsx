@@ -25,8 +25,8 @@ export default function FullServices() {
   }));
   
   return (
-    <section className="py-16 md:py-24 px-4 sm:px-6 md:px-10 bg-black text-white">
-      <div className="max-w-[1000px] mx-auto">
+    <section className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-8 lg:px-10 bg-black text-white safe-area-left safe-area-right">
+      <div className="max-w-[min(1000px,95vw)] mx-auto">
         {/* Header Section */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -38,14 +38,14 @@ export default function FullServices() {
           {/* Horizontal line and "Our services" text */}
           <div className="flex items-center gap-3 mb-4">
             <div className="w-8 h-px bg-white/60"></div>
-            <h4 className="text-sm md:text-base font-semibold text-white/60 uppercase tracking-wider">
+            <h4 className="text-sm md:text-base font-semibold text-white/85 uppercase tracking-wider">
               {t('fullServices.ourServices')}
             </h4>
           </div>
 
           {/* Main heading with button */}
           <div className="flex flex-col items-start gap-6">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white">
+            <h2 className="text-[clamp(1.875rem,6vw,3.75rem)] font-bold text-white text-overflow-safe">
               {t('fullServices.discoverFullServices')}
             </h2>
             <div className="w-full flex justify-center">

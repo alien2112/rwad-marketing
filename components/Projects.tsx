@@ -3,6 +3,7 @@
 import { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 import RotatingButton from '@/components/RotatingButton';
 import { getImageUrl } from '@/lib/imageUtils';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -76,17 +77,17 @@ export default function Projects() {
   return (
     <main className="min-h-screen bg-black text-white pt-20">
       {/* Hero/Intro Section */}
-      <section className="relative py-20 px-10 overflow-hidden">
+      <section className="relative py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-8 lg:px-10 overflow-hidden safe-area-left safe-area-right">
         <div className="absolute inset-0 bg-gradient-to-b from-black via-black/95 to-black" />
-        <div className="relative z-10 max-w-[1400px] mx-auto">
+        <div className="relative z-10 max-w-[min(1400px,95vw)] mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="mb-6"
           >
-            <div className="w-12 h-px bg-white/60 mb-4" />
-            <h4 className="text-sm md:text-base font-semibold text-white/60 uppercase tracking-wider mb-8">
+            <div className="w-12 h-px bg-white/80 mb-4" />
+            <h4 className="text-sm md:text-base font-semibold text-white/85 uppercase tracking-wider mb-8">
               {t('projects.ourLatestProjects')}
             </h4>
           </motion.div>
@@ -95,7 +96,7 @@ export default function Projects() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6"
+            className="text-[clamp(2rem,7vw,4.375rem)] font-bold mb-4 sm:mb-5 md:mb-6 text-overflow-safe"
           >
             {t('projects.showcaseOfExcellence')}
           </motion.h1>
@@ -104,7 +105,8 @@ export default function Projects() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-lg text-white/70 max-w-3xl"
+            className="text-base sm:text-lg text-white/85 max-w-[min(48rem,90vw)] text-overflow-safe"
+            style={{ fontSize: 'clamp(1rem, 2.5vw, 1.125rem)' }}
           >
             {t('projects.description')}
           </motion.p>
@@ -112,8 +114,8 @@ export default function Projects() {
       </section>
 
       {/* Filter Section */}
-      <section className="py-8 px-10 bg-black border-y border-white/10">
-        <div className="max-w-[1400px] mx-auto">
+      <section className="py-6 sm:py-8 px-4 sm:px-6 md:px-8 lg:px-10 bg-black border-y border-white/20 safe-area-left safe-area-right">
+        <div className="max-w-[min(1400px,95vw)] mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -122,27 +124,33 @@ export default function Projects() {
             className="flex flex-wrap justify-center gap-3"
           >
             {categoryKeys.map((categoryKey) => (
-              <RotatingButton
+              <motion.div
                 key={categoryKey}
-                text={t(`projects.categories.${categoryKey}`)}
-                width="auto"
-                height={48}
-                borderRadius={24}
-                fontSize={16}
-                fontWeight={600}
-                letterSpacing={0}
-                isActive={selectedCategory === categoryKey}
-                onClick={() => setSelectedCategory(categoryKey)}
-                useGradient={true}
-              />
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <RotatingButton
+                  text={t(`projects.categories.${categoryKey}`)}
+                  width={140}
+                  height={48}
+                  borderRadius={24}
+                  fontSize={16}
+                  fontWeight={600}
+                  letterSpacing={0}
+                  isActive={selectedCategory === categoryKey}
+                  onClick={() => setSelectedCategory(categoryKey)}
+                  useGradient={true}
+                />
+              </motion.div>
             ))}
           </motion.div>
         </div>
       </section>
 
       {/* Projects Grid */}
-      <section className="py-16 px-10 bg-black">
-        <div className="max-w-[1400px] mx-auto">
+      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 lg:px-10 bg-black safe-area-left safe-area-right">
+        <div className="max-w-[min(1400px,95vw)] mx-auto">
           {loading ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <SkeletonLoader variant="project" count={6} />
@@ -157,60 +165,91 @@ export default function Projects() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.4, delay: index * 0.05 }}
-                    className="group relative bg-[#111114] rounded-3xl overflow-hidden border border-white/20 hover:border-[#FFDD00]/50 transition-all duration-300 flex flex-col"
+                    whileHover={{ 
+                      y: -8,
+                      scale: 1.02,
+                      borderColor: 'rgba(255, 221, 0, 0.5)',
+                      boxShadow: '0 20px 40px rgba(255, 221, 0, 0.2)'
+                    }}
+                    className="group relative bg-[#111114] rounded-3xl overflow-hidden border border-white/30 transition-all duration-300 ease-out flex flex-col cursor-default"
                   >
                     {/* Project Image */}
                     <div className="relative w-full h-64 overflow-hidden">
-                      <Image
-                        src={getImageUrl(project.image)}
-                        alt={project.title}
-                        fill
-                        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                        className="object-cover group-hover:scale-110 transition-transform duration-500"
-                      />
+                      <motion.div
+                        whileHover={{ scale: 1.1 }}
+                        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                        className="relative w-full h-full"
+                      >
+                        <Image
+                          src={getImageUrl(project.image)}
+                          alt={project.title}
+                          fill
+                          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                          className="object-cover transition-all duration-500"
+                        />
+                      </motion.div>
                       {/* Year Badge */}
-                      <div className="absolute top-4 right-4 bg-black/70 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
+                      <motion.div 
+                        initial={{ opacity: 0, scale: 0 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: index * 0.05 + 0.2 }}
+                        whileHover={{ scale: 1.1 }}
+                        className="absolute top-4 right-4 bg-black/70 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider transition-transform duration-300 z-10"
+                      >
                         {project.year}
-                      </div>
+                      </motion.div>
                     </div>
 
                     {/* Project Info */}
                     <div className="p-6 flex-1 flex flex-col">
-                      <h3 className="text-xl font-bold text-white mb-2 line-clamp-1">
+                      <motion.h3 
+                        className="text-xl font-bold text-white mb-2 line-clamp-1 transition-colors duration-300"
+                        whileHover={{ color: '#FFDD00' }}
+                      >
                         {language === 'ar' ? project.titleAr : project.title}
-                      </h3>
-                      <p className="text-sm text-white/70 mb-4 line-clamp-2 flex-1">
+                      </motion.h3>
+                      <p className="text-sm text-white/85 mb-4 line-clamp-2 flex-1 leading-relaxed">
                         {language === 'ar' ? project.descriptionAr : project.description}
                       </p>
 
                       {/* Tags */}
                       <div className="flex flex-wrap gap-2 mb-4">
                         {(language === 'ar' ? project.tagsAr : project.tags).map((tag, tagIndex) => (
-                          <span
+                          <motion.span
                             key={tagIndex}
-                            className="px-3 py-1 bg-gray-800/50 text-white/70 text-xs font-semibold rounded-full uppercase tracking-wider border border-white/10"
+                            whileHover={{ 
+                              scale: 1.1,
+                              backgroundColor: 'rgba(255, 221, 0, 0.1)',
+                              borderColor: 'rgba(255, 221, 0, 0.3)',
+                              color: '#FFDD00'
+                            }}
+                            transition={{ duration: 0.2 }}
+                            className="px-3 py-1 bg-gray-800/60 text-white/85 text-xs font-semibold rounded-full uppercase tracking-wider border border-white/20 transition-all duration-200 cursor-default"
                           >
                             {tag}
-                          </span>
+                          </motion.span>
                         ))}
                       </div>
 
                       {/* Action Button */}
-                      {project.link ? (
-                        <a
-                          href={project.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="group w-full bg-[#FFDD00] hover:bg-[#e6c700] text-black px-6 py-3 rounded-xl font-semibold text-sm uppercase transition-all duration-200 hover:scale-[1.02] flex items-center justify-center gap-2"
+                      <motion.div
+                        whileHover={{ scale: 1.03 }}
+                        whileTap={{ scale: 0.98 }}
+                        transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                      >
+                        <Link
+                          href={`/projects/${project._id}`}
+                          className="group w-full bg-[#FFDD00] hover:bg-[#e6c700] text-black px-6 py-3 rounded-xl font-semibold text-sm uppercase transition-all duration-200 flex items-center justify-center gap-2"
                         >
                           <span>{t('projects.explore')}</span>
-                          <svg
+                          <motion.svg
                             width="16"
                             height="16"
                             viewBox="0 0 16 16"
                             fill="none"
                             xmlns="http://www.w3.org/2000/svg"
-                            className="transition-transform duration-200 group-hover:translate-x-1"
+                            whileHover={{ x: 4 }}
+                            transition={{ duration: 0.2 }}
                           >
                             <path
                               d="M6 12L10 8L6 4"
@@ -219,29 +258,9 @@ export default function Projects() {
                               strokeLinecap="round"
                               strokeLinejoin="round"
                             />
-                          </svg>
-                        </a>
-                      ) : (
-                        <button className="group w-full bg-[#FFDD00] hover:bg-[#e6c700] text-black px-6 py-3 rounded-xl font-semibold text-sm uppercase transition-all duration-200 hover:scale-[1.02] flex items-center justify-center gap-2">
-                          <span>{t('projects.explore')}</span>
-                          <svg
-                            width="16"
-                            height="16"
-                            viewBox="0 0 16 16"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="transition-transform duration-200 group-hover:translate-x-1"
-                          >
-                            <path
-                              d="M6 12L10 8L6 4"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                          </svg>
-                        </button>
-                      )}
+                          </motion.svg>
+                        </Link>
+                      </motion.div>
                     </div>
                   </motion.div>
                 ))}
@@ -249,7 +268,7 @@ export default function Projects() {
             </div>
           ) : (
             <div className="text-center py-20">
-              <p className="text-xl text-white/70 mb-6">
+              <p className="text-xl text-white/85 mb-6">
                 {t('projects.noProjectsFound')}
               </p>
               <button

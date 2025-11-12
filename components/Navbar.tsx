@@ -4,6 +4,13 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
 import LanguageSwitcher from './LanguageSwitcher';
+import { Sixtyfour } from 'next/font/google';
+
+const sixtyfour = Sixtyfour({
+  weight: '400',
+  subsets: ['latin'],
+  display: 'swap',
+});
 
 const navLinks = [
   { key: 'home', href: '/' },
@@ -19,14 +26,15 @@ function NavButton({ href, labelKey, t, onClick }: { href: string; labelKey: str
     <Link
       href={href}
       onClick={onClick}
-      className="relative block overflow-hidden rounded-full px-4 md:px-5 py-2.5 text-xs md:text-sm font-bold uppercase text-white whitespace-nowrap bg-gray-800/90 group"
+      className="relative block overflow-hidden rounded-full px-4 md:px-5 py-2.5 text-xs md:text-sm font-bold uppercase text-white whitespace-nowrap bg-gray-800/95 group focus-visible:outline-2 focus-visible:outline-[#FFDD00] focus-visible:outline-offset-2"
+      aria-label={label}
     >
       {/* Hover effect - brand yellow slides from bottom to top */}
-      <div className="absolute inset-0 bg-[#FFDD00] rounded-full transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
+      <div className="absolute inset-0 bg-[#FFDD00] rounded-full transform translate-y-full group-hover:translate-y-0 group-focus-visible:translate-y-0 transition-transform duration-300 ease-out" />
       {/* Default white text - moves up on hover */}
-      <span className="relative z-10 block text-center text-white transform group-hover:-translate-y-[150%] transition-transform duration-300 ease-out">{label}</span>
+      <span className="relative z-10 block text-center text-white transform group-hover:-translate-y-[150%] group-focus-visible:-translate-y-[150%] transition-transform duration-300 ease-out">{label}</span>
       {/* White text that slides up with the blue background */}
-      <span className="absolute inset-0 flex items-center justify-center text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out z-20 font-bold uppercase">
+      <span className="absolute inset-0 flex items-center justify-center text-white transform translate-y-full group-hover:translate-y-0 group-focus-visible:translate-y-0 transition-transform duration-300 ease-out z-20 font-bold uppercase">
         {label}
       </span>
     </Link>
@@ -65,17 +73,33 @@ export default function Navbar() {
       lastScrollY.current = currentScrollY;
     };
 
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Close mobile menu on ESC key
+      if (e.key === 'Escape' && isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+        // Return focus to menu button
+        const menuButton = document.querySelector('[aria-controls="mobile-menu"]') as HTMLButtonElement;
+        if (menuButton) {
+          menuButton.focus();
+        }
+      }
+    };
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isMobileMenuOpen]);
 
   return (
     <nav
       dir={isRTL ? 'rtl' : 'ltr'}
-      className="fixed top-0 left-0 right-0 z-50 bg-transparent transition-all duration-300"
+      className="fixed top-0 left-0 right-0 z-50 bg-transparent transition-all duration-300 safe-area-top"
       style={{ 
-        height: '82px', 
-        padding: '16px 20px',
+        height: 'clamp(60px, 8vw, 82px)', 
+        padding: 'clamp(0.75rem, 2vw, 1rem) clamp(1rem, 3vw, 1.25rem)',
         opacity: isExpanded ? 1 : 0.8,
         transform: isExpanded ? 'translateY(0)' : 'translateY(100%)'
       }}
@@ -103,7 +127,8 @@ export default function Navbar() {
             <div style={{ display: 'flex', alignItems: 'center' }}>
               <Link 
                 href="/" 
-                className="font-arkes text-white text-base font-medium uppercase tracking-[0.32em] leading-[1.2] hover:opacity-80 transition-opacity z-10"
+                className={`text-white text-lg sm:text-xl md:text-2xl font-normal uppercase tracking-[clamp(0.2em, 0.5vw, 0.32em)] leading-[1.2] hover:opacity-80 transition-opacity z-10 focus-visible:outline-2 focus-visible:outline-[#FFDD00] focus-visible:outline-offset-2 rounded ${sixtyfour.className}`}
+                aria-label="ALMOHTAREF - Home"
               >
                 ALMOHTAREF
               </Link>
@@ -118,8 +143,9 @@ export default function Navbar() {
             }}>
               <Link
                 href="/contact"
-                className="relative flex items-center group"
+                className="relative flex items-center group focus-visible:outline-2 focus-visible:outline-[#FFDD00] focus-visible:outline-offset-2 rounded-full"
                 style={{ zIndex: 20 }}
+                aria-label={t('nav.call')}
               >
                 {/* Call button with white bg/yellow outline; hover flips to yellow bg/white outline */}
                 <div className="bg-white hover:bg-[#FFDD00] text-black pl-3 md:pl-4 pr-3 md:pr-4 py-2 md:py-2.5 rounded-full flex items-center gap-1.5 border border-[#FFDD00] hover:border-white transition-colors transition-transform duration-200 group-hover:scale-[1.02]">
@@ -154,10 +180,11 @@ export default function Navbar() {
         {isExpanded && (
           <>
             {/* Logo and Language Switcher */}
-            <div className="flex items-center gap-2 md:gap-4">
+            <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
               <Link 
                 href="/" 
-                className="font-arkes text-white text-sm md:text-base font-medium uppercase tracking-[0.32em] leading-[1.2] hover:opacity-80 transition-opacity z-10"
+                className={`text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl font-normal uppercase tracking-[clamp(0.2em, 0.5vw, 0.32em)] leading-[1.2] hover:opacity-80 transition-opacity z-10 focus-visible:outline-2 focus-visible:outline-[#FFDD00] focus-visible:outline-offset-2 rounded ${sixtyfour.className}`}
+                aria-label="ALMOHTAREF - Home"
               >
                 ALMOHTAREF
               </Link>
@@ -189,8 +216,10 @@ export default function Navbar() {
             {/* Mobile Hamburger Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden flex flex-col gap-1.5 p-2 rounded-lg bg-gray-800/90 hover:bg-gray-700/90 transition-colors z-30"
-              aria-label="Toggle menu"
+              className="lg:hidden flex flex-col gap-1.5 p-2 rounded-lg bg-gray-800/95 hover:bg-gray-700/95 transition-colors z-30 focus-visible:outline-2 focus-visible:outline-[#FFDD00] focus-visible:outline-offset-2"
+              aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-menu"
             >
               <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
               <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''}`} />
@@ -201,7 +230,8 @@ export default function Navbar() {
             <div className="hidden lg:flex items-center relative z-20">
               <Link
                 href="/contact"
-                className="relative flex items-center group"
+                className="relative flex items-center group focus-visible:outline-2 focus-visible:outline-[#FFDD00] focus-visible:outline-offset-2 rounded-full"
+                aria-label={t('nav.call')}
               >
                 {/* Call button with white bg/yellow outline; hover flips to yellow bg/white outline */}
                 <div className="bg-white hover:bg-[#FFDD00] text-black pl-3 md:pl-4 pr-3 md:pr-4 py-2 md:py-2.5 rounded-full flex items-center gap-1.5 border border-[#FFDD00] hover:border-white transition-colors transition-transform duration-200 group-hover:scale-[1.02]">
@@ -235,53 +265,71 @@ export default function Navbar() {
 
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && isExpanded && (
-        <div className="lg:hidden fixed inset-0 top-[82px] bg-black/95 backdrop-blur-lg z-40">
-          <div className="flex flex-col items-center justify-start pt-8 px-6 space-y-6">
-            {/* Language Switcher for Mobile */}
-            <div className="md:hidden">
-              <LanguageSwitcher />
-            </div>
-            
-            {/* Mobile Navigation Links */}
-            {navLinks.map((link) => (
-              <NavButton
-                key={link.key}
-                href={link.href}
-                labelKey={link.key}
-                t={t}
-                onClick={() => setIsMobileMenuOpen(false)}
-              />
-            ))}
-            
-            {/* Mobile CALL Button */}
-            <Link
-              href="/contact"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="relative flex items-center group mt-4"
-            >
-              <div className="bg-white hover:bg-[#FFDD00] text-black pl-4 pr-4 py-2.5 rounded-full flex items-center gap-1.5 border border-[#FFDD00] hover:border-white transition-colors transition-transform duration-200 group-hover:scale-[1.02]">
-                <span className="text-xs font-bold uppercase tracking-wide">{t('nav.call')}</span>
-                <div className="w-7 h-7 bg-[#FFDD00] group-hover:bg-white rounded-full flex items-center justify-center border-2 border-white flex-shrink-0 transition-transform duration-200 group-hover:rotate-12 group-hover:scale-[1.05] text-white group-hover:text-[#FFDD00]">
-                  <svg
-                    width="10"
-                    height="10"
-                    viewBox="0 0 10 10"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="transition-transform duration-200 group-hover:rotate-45"
-                    style={{ transformOrigin: 'center' }}
-                  >
-                    <path
-                      d="M1 9L9 1M9 1H1M9 1V9"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
+        <div 
+          id="mobile-menu"
+          className="lg:hidden fixed inset-0 bg-black/95 backdrop-blur-lg z-40 safe-area-top" 
+          style={{ top: 'clamp(60px, 8vw, 82px)' }}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="mobile-menu-title"
+        >
+          <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-10 safe-area-left safe-area-right">
+            <div className="flex flex-col items-center justify-start pt-8">
+              {/* Container for navigation buttons */}
+              <div className="w-full max-w-md bg-gray-900/70 backdrop-blur-md rounded-2xl p-6 space-y-4 border border-white/20">
+                <h2 id="mobile-menu-title" className="sr-only">Navigation Menu</h2>
+                {/* Language Switcher for Mobile */}
+                <div className="md:hidden flex justify-center pb-2">
+                  <LanguageSwitcher />
+                </div>
+                
+                {/* Mobile Navigation Links */}
+                <div className="flex flex-col items-center gap-3">
+                  {navLinks.map((link) => (
+                    <NavButton
+                      key={link.key}
+                      href={link.href}
+                      labelKey={link.key}
+                      t={t}
+                      onClick={() => setIsMobileMenuOpen(false)}
                     />
-                  </svg>
+                  ))}
+                </div>
+                
+                {/* Mobile CALL Button */}
+                <div className="flex justify-center pt-2">
+                  <Link
+                    href="/contact"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="relative flex items-center group focus-visible:outline-2 focus-visible:outline-[#FFDD00] focus-visible:outline-offset-2 rounded-full"
+                    aria-label={t('nav.call')}
+                  >
+                    <div className="bg-white hover:bg-[#FFDD00] text-black pl-4 pr-4 py-2.5 rounded-full flex items-center gap-1.5 border border-[#FFDD00] hover:border-white transition-colors transition-transform duration-200 group-hover:scale-[1.02]">
+                      <span className="text-xs font-bold uppercase tracking-wide">{t('nav.call')}</span>
+                      <div className="w-7 h-7 bg-[#FFDD00] group-hover:bg-white rounded-full flex items-center justify-center border-2 border-white flex-shrink-0 transition-transform duration-200 group-hover:rotate-12 group-hover:scale-[1.05] text-white group-hover:text-[#FFDD00]">
+                        <svg
+                          width="10"
+                          height="10"
+                          viewBox="0 0 10 10"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="transition-transform duration-200 group-hover:rotate-45"
+                          style={{ transformOrigin: 'center' }}
+                        >
+                          <path
+                            d="M1 9L9 1M9 1H1M9 1V9"
+                            stroke="currentColor"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </Link>
                 </div>
               </div>
-            </Link>
+            </div>
           </div>
         </div>
       )}

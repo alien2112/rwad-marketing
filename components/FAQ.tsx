@@ -11,9 +11,9 @@ export default function FAQ() {
   const faqs = t('faq.items') as any[];
 
   return (
-    <section className="py-16 md:py-24 px-4 sm:px-6 md:px-10 bg-black text-white">
-      <div className="max-w-[1400px] mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+    <section className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-8 lg:px-10 bg-black text-white safe-area-left safe-area-right">
+      <div className="max-w-[min(1400px,95vw)] mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 lg:gap-16 xl:gap-20">
           {/* Left Section - Title */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -28,7 +28,7 @@ export default function FAQ() {
                 {t('faq.title')}
               </h4>
             </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-white whitespace-normal sm:whitespace-nowrap">
+            <h2 className="text-[clamp(1.5rem,5vw,3rem)] font-bold leading-tight text-white text-overflow-safe">
               {t('faq.heading')}
             </h2>
           </motion.div>
@@ -96,7 +96,7 @@ export default function FAQ() {
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
-                      <p className="px-7 pb-6 text-white/70 text-sm md:text-base">{faq.answer}</p>
+                      <p className="px-7 pb-6 text-white/85 text-sm md:text-base">{faq.answer}</p>
                     </motion.div>
                   )}
                 </AnimatePresence>
