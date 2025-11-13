@@ -488,9 +488,8 @@ export default function AboutUs() {
               <div className="grid grid-cols-2 gap-4">
                 {[
                   { src: '/WhatsApp Image 2025-11-11 at 18.29.40_7cb1596f.webp', altKey: 'doorWindowOpening', delay: 0, className: '' },
-                  { src: '/WhatsApp Image 2025-11-11 at 18.29.40_f2ca1be1.webp', altKey: 'plumbingElectrical', delay: 0.1, className: 'mt-8' },
-                  { src: '/DeliberateService.webp', altKey: 'concreteCutting', delay: 0.2, className: '-mt-8' },
-                  { src: null, delay: 0.3, className: '' },
+                  { src: '/DeliberateService.webp', altKey: 'concreteCutting', delay: 0.1, className: '-mt-8' },
+                  { src: null, delay: 0.2, className: '' },
                 ].map((item, index) => (
                   <motion.div
                     key={index}

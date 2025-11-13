@@ -3,7 +3,6 @@ import About from '@/components/About';
 import Services from '@/components/Services';
 import FullServices from '@/components/FullServices';
 import Gallery from '@/components/Gallery';
-import FAQ from '@/components/FAQ';
 import SuccessStories from '@/components/SuccessStories';
 import Footer from '@/components/Footer';
 
@@ -15,7 +14,6 @@ export default function Home() {
       <Services />
       <FullServices />
       <Gallery />
-      <FAQ />
       <SuccessStories />
       <Footer />
     </main>

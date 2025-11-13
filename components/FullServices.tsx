@@ -92,6 +92,29 @@ export default function FullServices() {
           })}
         </div>
 
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: serviceList.length * 0.1 }}
+          className="bg-[#111114] rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 border border-white"
+        >
+          <div className="flex flex-col md:flex-row items-center gap-8">
+            <div className="relative flex-shrink-0 w-full md:w-2/5 h-48 sm:h-64 md:h-80 rounded-2xl sm:rounded-3xl overflow-hidden">
+              <Image
+                src="/api/images/6914adeeeb8f390879f6fc2c"
+                alt={t('fullServices.wireCuttingCardAlt')}
+                fill
+                sizes="(min-width: 768px) 40vw, 100vw"
+                className="object-cover"
+              />
+            </div>
+            <div className="flex-1">
+              <p className="text-white">{t('fullServices.wireCuttingCardText')}</p>
+            </div>
+          </div>
+        </motion.div>
+
         {/* Call to Action Box */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}

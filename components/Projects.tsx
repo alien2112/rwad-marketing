@@ -28,7 +28,7 @@ interface Project {
 // Category keys mapped to database values
 const categoryMap: Record<string, { en: string; ar: string }> = {
   drilling: { en: 'Drilling', ar: 'حفر' },
-  cutting: { en: 'Cutting', ar: 'قطع' },
+  cutting: { en: 'Cutting', ar: 'قص' },
   repair: { en: 'Repair', ar: 'إصلاح' },
   demolition: { en: 'Demolition', ar: 'هدم' },
 };

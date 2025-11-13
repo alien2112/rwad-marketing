@@ -198,14 +198,16 @@
     "discoverFullServices": "Discover the Full SERVICES",
     "concreteCuttingAndDrilling": "Concrete cutting and drilling",
     "learnAboutServices": "Learn about our services or contact us through the contact page.",
+    "wireCuttingCardText": "Water-assisted wire cutting",
+    "wireCuttingCardAlt": "Detailed view of the final concrete surface after repair",
     "services": [
-      {
-        "description": "Drilling concrete with core holes (up to 50 cm in diameter).",
-        "alt": "Technician performing concrete core drilling service"
-      },
       {
         "description": "Cutting reinforced concrete with a diamond saw (for all thicknesses).",
         "alt": "Diamond saw cutting reinforced concrete slab"
+      },
+      {
+        "description": "Drilling concrete with core holes (up to 50 cm in diameter).",
+        "alt": "Technician performing concrete core drilling service"
       },
       {
         "description": "Cutting thick concrete using diamond wire technology.",

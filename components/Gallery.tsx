@@ -57,7 +57,6 @@ export default function Gallery() {
     { key: 'all', label: t('gallery.filters.all') },
     { key: 'cutting', label: t('gallery.filters.cutting') },
     { key: 'perforation', label: t('gallery.filters.perforation') },
-    { key: 'maintenance', label: t('gallery.filters.maintenance') },
   ];
 
   return (

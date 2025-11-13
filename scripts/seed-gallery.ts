@@ -8,7 +8,7 @@ const galleryImages = [
   { 
     filename: 'IMG-20251111-WA0028.webp', 
     alt: 'Diamond saw cutting reinforced wall',
-    altAr: 'منشار الماس يقطع الجدار المسلح',
+    altAr: 'منشار الماس يقص الجدار المسلح',
     order: 0,
   },
   { 
@@ -32,7 +32,7 @@ const galleryImages = [
   { 
     filename: 'IMG-20251111-WA0034.webp', 
     alt: 'Concrete cutting tools arranged on site',
-    altAr: 'أدوات قطع الخرسانة مرتبة في الموقع',
+    altAr: 'أدوات قص الخرسانة مرتبة في الموقع',
     order: 4,
   },
   { 

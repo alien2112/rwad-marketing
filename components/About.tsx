@@ -17,10 +17,6 @@ const aboutImages = [
     alt: 'Specialized door and window opening service',
   },
   {
-    src: '/WhatsApp Image 2025-11-11 at 18.29.40_f2ca1be1.webp',
-    alt: 'Precise plumbing and electrical installation work',
-  },
-  {
     src: '/DeliberateService.webp',
     alt: 'Professional concrete cutting and demolition service',
   },
