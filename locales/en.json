@@ -225,7 +225,7 @@
   },
   "successStories": {
     "heading": "Success stories prove our commitment",
-    "knowMore": "KNOW MORE",
+    "knowMore": "Learn more",
     "home": "HOME",
     "labels": {
       "challenge": "The challenge:",
@@ -234,25 +234,32 @@
     },
     "stories": [
       {
-        "title": "Residential tower in Jeddah",
-        "subtitle": "Providing 36 working hours",
-        "challenge": "Implementing 28 extension openings on occupied floors.",
-        "solution": "Divide the work into night shifts with an integrated dust extraction system.",
-        "result": "The work was completed without any complaints from the residents and with the finishes fully preserved."
+        "title": "Residential Villa – Jeddah",
+        "subtitle": "24 working hours",
+        "challenge": "Create a new passage in a concrete wall without damaging floors or paintwork.",
+        "solution": "Used a lightweight wall saw with full containment of the cutting area.",
+        "result": "Delivered in a single day with finishes completely preserved."
       },
       {
-        "title": "Hospital in Mecca",
-        "subtitle": "Zero suspension of services",
-        "challenge": "Cutting openings in operating rooms without affecting sensitive equipment.",
-        "solution": "Use water saws with complete wrapping of the work area and water recycling.",
-        "result": "Project delivered ahead of schedule with a calibration report for the medical devices"
+        "title": "Private School – Mecca",
+        "subtitle": "36 working hours",
+        "challenge": "Cut openings for new air conditioners during school hours without disturbing students.",
+        "solution": "Executed in short windows after classes with a portable dust extraction system.",
+        "result": "Project completed quietly with no interruption to the learning process."
       },
       {
-        "title": "Factory in Medina",
-        "subtitle": "100% commitment to safety",
-        "challenge": "Removing heavy concrete foundations within an active production line",
-        "solution": "A specialized team using diamond wire technology with a segmented dismantling plan.",
-        "result": "The line was restarted on the same day without any injuries or losses."
+        "title": "Commercial Warehouse – Taif",
+        "subtitle": "48 working hours",
+        "challenge": "Remove an old concrete tank base inside a confined space.",
+        "solution": "Applied diamond wire cutting with a step-by-step dismantling plan.",
+        "result": "Completed safely with no damage to the structure or site."
+      },
+      {
+        "title": "Office Building – Mecca",
+        "subtitle": "72 working hours",
+        "challenge": "Create elevator openings in an existing building without impacting columns or finishes.",
+        "solution": "Specialized team used diamond wire cutting with temporary bracing for surrounding walls.",
+        "result": "Project finished with high precision and immediate readiness for elevator installation."
       }
     ]
   },
