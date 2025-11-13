@@ -20,22 +20,6 @@ export default function SuccessStories() {
   return (
     <section className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-8 lg:px-10 bg-black text-white relative overflow-hidden safe-area-left safe-area-right">
       <div className="max-w-[min(1600px,95vw)] mx-auto relative">
-        {/* HOME Button - Top Right */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="absolute top-0 right-0 z-20"
-        >
-          <Link
-            href="/"
-            className="bg-gray-800/90 hover:bg-gray-700/90 text-white px-5 py-2.5 rounded-full text-sm font-bold uppercase transition-colors"
-          >
-            {t('successStories.home')}
-          </Link>
-        </motion.div>
-
         {/* Title - Top Left */}
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
