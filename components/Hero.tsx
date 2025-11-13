@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -22,15 +22,10 @@ interface Banner {
 
 export default function Hero() {
   const { t } = useLanguage();
-  const [showFullSentence, setShowFullSentence] = useState(true);
   const [banner, setBanner] = useState<string>('/banner.webp'); // Default fallback
 
   useEffect(() => {
     fetchBanner();
-    const toggle = setInterval(() => {
-      setShowFullSentence((prev) => !prev);
-    }, 2600);
-    return () => clearInterval(toggle);
   }, []);
 
   const fetchBanner = async () => {
@@ -90,34 +85,10 @@ export default function Hero() {
       <div className="absolute inset-0 bg-black/70" />
 
       <div className="relative z-10 w-full max-w-[min(1200px,90vw)] px-4 sm:px-6 md:px-10 py-12 sm:py-16 md:py-20 lg:py-24 xl:py-32 flex flex-col items-center gap-4 sm:gap-6 md:gap-8 lg:gap-10 text-center safe-area-left safe-area-right">
-        <div className="min-h-[2.2rem] md:min-h-[2.6rem] flex items-center mt-8">
-          <AnimatePresence mode="wait">
-            {showFullSentence ? (
-              <motion.p
-                key="full-sentence"
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -16 }}
-                transition={{ duration: 0.4, ease: 'easeOut' }}
-                className="text-black text-sm md:text-lg tracking-[0.18em] font-semibold"
-              >
-                {t('hero.tagline')}
-              </motion.p>
-            ) : (
-              <motion.div
-                key="alt-sentence"
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -16 }}
-                transition={{ duration: 0.4, ease: 'easeOut' }}
-                className="relative inline-flex h-[1.6em] md:h-[1.8em] items-center justify-center overflow-hidden"
-              >
-                <span className="text-black text-base md:text-lg font-bold tracking-[0.25em]">
-                  {t('hero.taglineAlt')}
-                </span>
-              </motion.div>
-            )}
-          </AnimatePresence>
+        <div className="min-h-[2.2rem] md:min-h-[2.6rem] flex items-center justify-center mt-8">
+          <p className="inline-flex items-center justify-center rounded-full bg-[#FFDD00] px-5 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-black sm:text-sm md:text-base">
+            {t('hero.staticBanner')}
+          </p>
         </div>
 
         <motion.div
@@ -151,6 +122,47 @@ export default function Hero() {
                 <span className="mt-5 block text-xs md:text-sm tracking-[0.6em] uppercase text-white">
                   {t('hero.alwaysReady')}
                 </span>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                  className="mt-8 flex justify-center md:justify-start"
+                >
+                  <Link
+                    href="/contact"
+                    className="group relative inline-flex items-center justify-center rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FFDD00]"
+                    aria-label={t('hero.cta')}
+                  >
+                    <span className="absolute inset-0 rounded-full bg-gradient-to-r from-[#FFDA1A] via-[#FFC30D] to-[#FF9800] shadow-[0_12px_35px_rgba(255,200,0,0.35)] transition-all duration-300 group-hover:shadow-[0_18px_45px_rgba(255,180,0,0.5)] group-active:shadow-[0_8px_25px_rgba(255,180,0,0.35)]" />
+                    <span className="absolute -inset-2 rounded-full bg-gradient-to-r from-[#FFDA1A]/40 via-transparent to-[#FF9800]/40 blur-xl opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                    <span className="relative flex items-center gap-2 px-8 py-3 text-sm sm:text-base font-semibold uppercase tracking-wide text-black">
+                      {t('hero.cta')}
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 18 18"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="transition-transform duration-300 group-hover:translate-x-1"
+                      >
+                        <path
+                          d="M3 9H15"
+                          stroke="currentColor"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                        <path
+                          d="M9.75 4.5L15 9L9.75 13.5"
+                          stroke="currentColor"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </span>
+                  </Link>
+                </motion.div>
               </div>
               <Link
                 href="#about"

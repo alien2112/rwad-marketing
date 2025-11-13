@@ -686,7 +686,7 @@ export default function AboutUs() {
                       rotate: 5,
                       transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] }
                     }}
-                    className={`absolute top-6 right-6 w-16 h-16 rounded-xl bg-gradient-to-br ${item.gradient} flex items-center justify-center transition-transform duration-300`}
+                    className={`absolute top-6 ${language === 'ar' ? 'left-6' : 'right-6'} w-16 h-16 rounded-xl bg-gradient-to-br ${item.gradient} flex items-center justify-center transition-transform duration-300`}
                   >
                     {item.icon}
                   </motion.div>

@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import PromotionalBanner from './PromotionalBanner';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Sixtyfour } from 'next/font/google';
 
@@ -104,8 +103,6 @@ export default function About() {
           </motion.p>
         </div>
 
-        {/* Special Offer Section */}
-        <PromotionalBanner />
       </div>
     </section>
   );

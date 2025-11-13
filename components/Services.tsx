@@ -257,7 +257,7 @@ export default function Services() {
         >
           {/* SEND WHATS UP Button */}
           <a
-            href="https://wa.me/966536137573"
+            href="https://wa.me/966548677162"
             target="_blank"
             rel="noopener noreferrer"
           >
