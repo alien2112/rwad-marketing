@@ -21,7 +21,8 @@ interface Banner {
 }
 
 export default function Hero() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const isArabic = language === 'ar';
   const [banner, setBanner] = useState<string>('/banner.webp'); // Default fallback
 
   useEffect(() => {
@@ -85,8 +86,14 @@ export default function Hero() {
       <div className="absolute inset-0 bg-black/70" />
 
       <div className="relative z-10 w-full max-w-[min(1200px,90vw)] px-4 sm:px-6 md:px-10 py-12 sm:py-16 md:py-20 lg:py-24 xl:py-32 flex flex-col items-center gap-4 sm:gap-6 md:gap-8 lg:gap-10 text-center safe-area-left safe-area-right">
-        <div className="min-h-[2.2rem] md:min-h-[2.6rem] flex items-center justify-center mt-8">
-          <p className="inline-flex items-center justify-center rounded-full bg-[#FFDD00] px-5 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-black sm:text-sm md:text-base">
+        <div className="min-h-[2.4rem] md:min-h-[2.8rem] flex items-center justify-center mt-8">
+          <p
+            className={`inline-flex items-center justify-center rounded-full bg-[#FFDD00] px-5 py-2 uppercase tracking-[0.18em] text-black transition-colors ${
+              isArabic
+                ? 'text-base sm:text-lg md:text-xl font-bold'
+                : 'text-sm sm:text-base md:text-lg font-semibold'
+            }`}
+          >
             {t('hero.staticBanner')}
           </p>
         </div>
@@ -97,36 +104,36 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="w-full max-w-4xl"
         >
-          <div className="relative rounded-[clamp(24px,4vw,48px)] border border-white/40 bg-white/[0.08] backdrop-blur-2xl px-4 sm:px-6 md:px-8 lg:px-12 py-4 sm:py-6 md:py-8 lg:py-10 shadow-[0_30px_80px_rgba(0,0,0,0.45)] w-full">
-            <div className="pointer-events-none absolute inset-[10px] rounded-[40px] border border-white/20" />
-            <div className="relative flex flex-col md:flex-row items-center md:items-end justify-between gap-8">
-              <div className="flex-1 text-center md:text-left">
+          <div className="relative rounded-3xl sm:rounded-[clamp(24px,4vw,48px)] border border-white/30 sm:border-white/40 bg-white/[0.08] backdrop-blur-2xl px-5 sm:px-6 md:px-8 lg:px-12 py-6 sm:py-7 md:py-8 lg:py-10 shadow-[0_24px_70px_rgba(0,0,0,0.45)] w-full">
+            <div className="pointer-events-none absolute inset-[8px] sm:inset-[10px] hidden sm:block rounded-[32px] border border-white/20" />
+            <div className="relative flex flex-col gap-6 sm:gap-7 md:gap-8 md:flex-row items-center md:items-end justify-between">
+              <div className="flex-1 text-center md:text-left space-y-4">
                 <span
                   data-font="sixtyfour"
                   className={`${sixtyfour.variable} ${sixtyfour.className} hero-almohtaref-banner`}
                   style={{ 
                     display: 'block',
-                    fontSize: 'clamp(2rem, 8vw, 4.5rem)',
+                    fontSize: 'clamp(1.5rem, 7.5vw, 4.1rem)',
                     textTransform: 'uppercase',
                     filter: 'drop-shadow(0 4px 16px rgba(0,0,0,0.6))',
                     fontFamily: 'var(--font-sixtyfour), "Sixtyfour", "Sixtyfour Variable", system-ui, -apple-system, sans-serif',
                     fontWeight: '400',
                     color: '#FFDD00',
-                    lineHeight: '1.1',
+                    lineHeight: '1.05',
                     whiteSpace: 'nowrap'
                   }}
                 >
                   ALMOHTAREF
                 </span>
-                <div className="mt-5 h-px w-full bg-gradient-to-r from-transparent via-white/80 to-transparent" />
-                <span className="mt-5 block text-xs md:text-sm tracking-[0.6em] uppercase text-white">
+                <div className="h-px w-full bg-gradient-to-r from-transparent via-white/80 to-transparent" />
+                <span className="block text-[0.65rem] sm:text-xs md:text-sm tracking-[0.55em] sm:tracking-[0.6em] uppercase text-white">
                   {t('hero.alwaysReady')}
                 </span>
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.4 }}
-                  className="mt-8 flex justify-center md:justify-start"
+                  className="flex justify-center md:justify-start pt-2"
                 >
                   <Link
                     href="/contact"
@@ -166,7 +173,7 @@ export default function Hero() {
               </div>
               <Link
                 href="#about"
-                className="group relative flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-white/50 bg-black/40 text-white transition-colors duration-300 hover:bg-[#FFDD00] hover:text-black touch-manipulation focus-visible:outline-2 focus-visible:outline-[#FFDD00] focus-visible:outline-offset-2"
+                className="group relative flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-white/40 bg-black/50 text-white transition-colors duration-300 hover:bg-[#FFDD00] hover:text-black touch-manipulation focus-visible:outline-2 focus-visible:outline-[#FFDD00] focus-visible:outline-offset-2"
                 aria-label="Scroll to about section"
               >
                 <div className="absolute inset-0 rounded-full border border-white/20 group-hover:border-black/30 transition-colors" />
