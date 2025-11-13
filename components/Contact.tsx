@@ -95,19 +95,20 @@ export default function Contact() {
       {/* Contact Form and Info Section */}
       <section className="py-8 sm:py-12 md:py-16 lg:py-20 px-4 sm:px-6 md:px-8 lg:px-10 bg-black safe-area-left safe-area-right">
         <div className="max-w-[min(1400px,95vw)] mx-auto">
-          <div className="grid md:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-16">
+          <div className="grid md:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-16 items-stretch">
             {/* Contact Form */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
+              className="h-full"
             >
-              <div className="bg-gradient-to-br from-gray-900 via-gray-900 to-black rounded-2xl p-6 sm:p-8 md:p-10 border border-gray-800">
+              <div className="bg-gradient-to-br from-gray-900 via-gray-900 to-black rounded-2xl p-6 sm:p-8 md:p-10 border border-gray-800 h-full flex flex-col">
                 <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-[#FFDD00]">
                   {t('contact.sendMessage')}
                 </h2>
-                <form onSubmit={handleSubmit} className="space-y-6" noValidate>
+                <form onSubmit={handleSubmit} className="space-y-6 flex-1 flex flex-col" noValidate>
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium mb-2 text-white/90">
                       {t('contact.form.name')}
@@ -228,7 +229,7 @@ export default function Contact() {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-[#FFDD00] to-[#FFE640] text-black font-bold py-4 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-[#FFDD00]/30 uppercase tracking-wide text-sm disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-[#FFDD00] focus-visible:outline-offset-2"
+                    className="w-full bg-gradient-to-r from-[#FFDD00] to-[#FFE640] text-black font-bold py-4 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-[#FFDD00]/30 uppercase tracking-wide text-sm disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-[#FFDD00] focus-visible:outline-offset-2 mt-auto"
                     aria-label={isSubmitting ? t('contact.form.sending') : t('contact.form.send')}
                   >
                     {isSubmitting ? t('contact.form.sending') : t('contact.form.send')}
@@ -258,7 +259,7 @@ export default function Contact() {
               <div className="space-y-6">
                 {/* Phone */}
                 <motion.a
-                  href="tel:+966536137573"
+                  href="tel:0548677162"
                   whileHover={{ scale: 1.02 }}
                   className="block bg-gradient-to-br from-gray-900 to-black rounded-xl p-6 border border-gray-700 hover:border-[#FFDD00]/60 transition-all duration-300 focus-visible:outline-2 focus-visible:outline-[#FFDD00] focus-visible:outline-offset-2"
                   aria-label={`Call us at ${t('contact.phoneNumber')}`}
@@ -281,7 +282,7 @@ export default function Contact() {
 
                 {/* WhatsApp */}
                 <motion.a
-                  href="https://wa.me/966536137573"
+                  href="https://wa.me/966548677162"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.02 }}
@@ -300,6 +301,28 @@ export default function Contact() {
                         <PhoneNumber phoneNumber={t('contact.phoneNumber')} />
                       </p>
                       <p className="text-white/85">{t('contact.quickResponse')}</p>
+                    </div>
+                  </div>
+                </motion.a>
+
+                {/* Email */}
+                <motion.a
+                  href="mailto:Redasarhan555@gmail.com"
+                  whileHover={{ scale: 1.02 }}
+                  className="block bg-gradient-to-br from-gray-900 to-black rounded-xl p-6 border border-gray-700 hover:border-[#FFDD00]/60 transition-all duration-300 focus-visible:outline-2 focus-visible:outline-[#FFDD00] focus-visible:outline-offset-2"
+                  aria-label={`Email us at ${t('contact.emailAddress')}`}
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-lg bg-[#FFDD00]/10 flex items-center justify-center flex-shrink-0">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFDD00" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M4 4H20C21.1046 4 22 4.89543 22 6V18C22 19.1046 21.1046 20 20 20H4C2.89543 20 2 19.1046 2 18V6C2 4.89543 2.89543 4 4 4Z" />
+                        <path d="M22 6L12 13L2 6" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="text-white font-semibold mb-1">{t('contact.email')}</h3>
+                      <p className="text-white/85">{t('contact.emailAddress')}</p>
+                      <p className="text-white/85">{t('contact.emailResponse')}</p>
                     </div>
                   </div>
                 </motion.a>

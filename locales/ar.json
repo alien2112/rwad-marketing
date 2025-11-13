@@ -8,9 +8,9 @@
     "call": "اتصل"
   },
   "hero": {
-    "tagline": "قطع وتثقيب الخرسانة الاحترافية خلال 24 ساعة في مكة",
-    "taglineAlt": "جدة والطائف",
-    "alwaysReady": "دائماً مستعدون"
+    "staticBanner": "قطع وتثقيب الخرسانة الاحترافية خلال 24 ساعة في جدة",
+    "alwaysReady": "دائماً مستعدون",
+    "cta": "احصل على عرض السعر الآن"
   },
   "about": {
     "title": "من نحن",
@@ -78,12 +78,6 @@
       }
     ]
   },
-  "promotional": {
-    "heading": "عرض خاص لحملات إعلانات Google",
-    "description": "احجز استشارتك المجانية لتحليل مشروعك واكتشف أفضل حل للقطع والتثقيب في دقائق",
-    "sendWhatsApp": "إرسال واتساب",
-    "callUs": "اتصل بنا"
-  },
   "contact": {
     "getInTouch": "تواصل معنا",
     "heading": "اتصل بنا",
@@ -93,9 +87,9 @@
       "name": "اسمك",
       "namePlaceholder": "أحمد محمد",
       "email": "عنوان البريد الإلكتروني",
-      "emailPlaceholder": "info@alyaqeenco.com",
+      "emailPlaceholder": "example@email.com",
       "phone": "رقم الهاتف",
-      "phonePlaceholder": "+966 53 613 7573",
+      "phonePlaceholder": "05XXXXXXXX",
       "service": "الخدمة المطلوبة",
       "selectService": "اختر خدمة",
       "message": "الرسالة",
@@ -107,12 +101,15 @@
     "contactInfo": "معلومات الاتصال",
     "contactInfoDescription": "نحن هنا لمساعدتك في جميع احتياجاتك من قطع الخرسانة والبناء. تواصل معنا من خلال أي من القنوات التالية.",
     "phone": "الهاتف",
-    "phoneNumber": "+966 53 613 7573",
+    "phoneNumber": "0548677162",
     "available247": "متاح على مدار الساعة",
+    "email": "البريد الإلكتروني",
+    "emailAddress": "Redasarhan555@gmail.com",
+    "emailResponse": "نرد عادة خلال ساعة",
     "whatsapp": "واتساب",
     "quickResponse": "استجابة سريعة مضمونة",
     "location": "الموقع",
-    "locationCity": "مكة المكرمة، المملكة العربية السعودية",
+    "locationCity": "جدة، المملكة العربية السعودية",
     "locationService": "خدمة مكة وجدة والطائف",
     "workingHours": "ساعات العمل",
     "hours247": "متاح على مدار الساعة",
@@ -120,8 +117,11 @@
   },
   "footer": {
     "social": "وسائل التواصل",
+    "address": "العنوان: جدة، المملكة العربية السعودية",
     "copyright": "جميع الحقوق محفوظة @",
-    "terms": "الشروط والأحكام"
+    "terms": "الشروط والأحكام",
+    "designedBy": "صُمم بواسطة",
+    "designedByAgency": "رواد الرقمية"
   },
   "terms": {
     "title": "الشروط والأحكام",

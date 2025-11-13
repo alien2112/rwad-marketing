@@ -110,13 +110,48 @@ export default function Footer() {
         </div>
 
         {/* Divider and bottom row */}
-        <div className="border-t border-white/20 pt-4 md:pt-6 flex flex-col md:flex-row items-center justify-between gap-3 md:gap-4">
-          <p className="text-white/85 text-xs sm:text-sm text-center md:text-left">
-            {t('footer.copyright')}{' '}
-            <Link href="/terms-and-conditions" className="hover:text-white transition-colors text-white/90">
-              {t('footer.terms')}
-            </Link>
-          </p>
+        <div className="border-t border-white/20 pt-4 md:pt-6 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 text-center sm:text-left">
+            <div className="flex items-center justify-center sm:justify-start gap-3">
+              <span className="flex items-center justify-center w-9 h-9 rounded-full bg-white/5 border border-white/15">
+                <svg
+                  aria-hidden="true"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="text-[#FFDD00]"
+                >
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0Z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+              </span>
+              <p className="text-white/90 text-sm sm:text-base font-medium">{t('footer.address')}</p>
+            </div>
+          </div>
+          <div className="flex flex-col items-center md:items-end gap-1">
+            <p className="text-white/80 text-xs sm:text-sm text-center md:text-right">
+              {t('footer.copyright')}{' '}
+              <Link href="/terms-and-conditions" className="hover:text-white transition-colors text-white/90">
+                {t('footer.terms')}
+              </Link>
+            </p>
+            <p className="text-white/80 text-xs sm:text-sm text-center md:text-right">
+              {t('footer.designedBy')}{' '}
+              <Link
+                href="https://wa.me/966541430116"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#FFDD00] hover:text-white transition-colors"
+              >
+                {t('footer.designedByAgency')}
+              </Link>
+            </p>
+          </div>
         </div>
       </div>
     </footer>
